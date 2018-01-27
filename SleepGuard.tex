@@ -1,0 +1,57 @@
+
+\documentclass[conference]{sigchi}
+
+\input{preamble}
+
+
+\begin{document}
+
+\title{SleepGuard: Towards A Deep Understanding of Sleep by Exploiting Rich Smartwatch Sensing Data}
+
+\maketitle
+
+\begin{abstract}
+%Sleep can help people restore the body's function, store energy, and repair damaged cells effectively. Because of its importance,
+%scientists have been designing sleep monitoring systems for many years. However, in recent years, the rapid rise of wearable devices makes
+%it possible for the device to become a portable sleep monitoring tool. To take this opportunity, we present {\systemname}, a deep
+%understanding of sleep detection system based on actigraphy by smartwatch. Collecting and analyzing the built-in  sensor data on the
+%smartwatch, {\systemname} integrates sleep postures and movements, acoustic events during sleep, and illumination conditions in the sleep
+%environment to achieve the purpose of fine-grained sleep pattern detection. Based on the detected sleep pattern, we deduce the user's sleep
+%stages and quality. Extensive experiments for 10 users over 2 weeks show that {\systemname} outperforms existing state-of-the-art
+%actigraphy based sleep monitoring system.
+
+Sleep is an important part of our daily routine -- we spend about one-third of our time doing it. By tracking the
+sleep-related events and activities, sleep monitoring provides the decision
+support to help us understand the sleep quality and the causes of poor sleep. Wearable
+devices provide a new way for sleep monitoring, allowing us to monitor sleep from
+the comfort of our own home, but existing solutions do not take full advantage
+of the rich senor data provided by these portable devices. In this paper, we present {\systemname}, a
+smartwatch-based sleep monitor solution that can track an extensive set of
+sleep-related events. \systemname integrates a range of analysis and algorithms
+to track and monitor events like sleep postures and movements, acoustic events during sleep, and illumination conditions,
+many of these are not supported by prior solutions. From these events, a statistical
+model can then evaluate the user's sleep quality across various sleep stages.
+We evaluate our approach by conducting extensive experiments on 10 users across
+a 2-week period. Our experimental results show that \systemname can track a
+wider range of sleep-related events compared with the state-of-the-art mobile-based
+sleep monitoring system.
+\end{abstract}
+
+
+%\keywords{Smartwatch; Sleep pattern; Sensors}
+
+\input{1introduction.tex}
+\input{2overview.tex}
+\input{3design.tex}
+\input{4experiment.tex}
+\input{5related.tex}
+
+
+\section{CONCLUSION}
+This paper presents \systemname, a smartwatch based deep understanding of sleep detection system. \systemname exploits the rich sensor data provided by smartwatches to track a wider range of sleep-related activities. To detect sleep related activities, we effectively exploit the smartwatch sensor data and design a set of new algorithms based on the particular characteristics. Extensive experimental results show that \systemname can accurately identify lots of sleep activities, including body postures, body rollover, hand positions and acoustical events. In the future work, we will optimize the energy consumption and design detection models for more events.
+
+\begin{small}
+\bibliographystyle{SIGCHI-Reference-Format}
+\bibliography{sleep_ref}
+\end{small}
+\end{document}

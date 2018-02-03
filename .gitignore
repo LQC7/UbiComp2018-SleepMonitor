@@ -226,3 +226,4 @@ TSWLatexianTemp*
 *.sta
 
 SleepGuard.pdf
+*.aux

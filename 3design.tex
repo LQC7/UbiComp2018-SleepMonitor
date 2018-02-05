@@ -1,6 +1,6 @@
-\section{SYSTEM DESIGH}\label{Sec:3design}
-In this section, we specify the design details for each function component in {\systemname}. At the same time, we will show how we extract the corresponding features, build models and design algorithms to detect different sleep patterns.
+\section{SYSTEM DESIGN}\label{Sec:3design}
 
+\input{2overview.tex}
 
 \begin{figure}[!thbp]
 \centering
@@ -309,4 +309,3 @@ Further, to quantize the quality of a sleep, we use the Sleep Quality Report mod
 SQ=\frac{(REM \times 0.5+Light \times 0.75+Deep) \times 100}{REM+Light+Deep}
  \end{equation}
 where, REM, Deep and Light represents the duration time in a sleep process. The range of $SQ$ is from 50 to 100. A high value of $SQ$ shows a good  sleep quality.
-% In order to better analyse the sleep patterns, we detect the ambient illumination conditions in the sleep environment. We have carried out the experiments many times in  different indoor environments and different lighting conditions. The experiments can be divided into two categories: bedroom with dim light (Weak illumination condition, $\leq$10 Lux); bedroom with strong light (Strong illumination condition, average of 180 Lux).  Therefore, we can utilize the light sensor built in smartwatch to measure different light condition that will be a part of sleep pattern.

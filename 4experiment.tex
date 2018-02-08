@@ -21,10 +21,13 @@ Then to test the overall sleep posture detection performance, we calculate the d
 \begin{table}[!thbp]
  \tabcolsep1pt
   \centering  % ±í¾ÓÖÐ
-  \renewcommand\arraystretch{0.277}
+  %\renewcommand\arraystretch{0.277}
+  %\caption{The confusion matrix of body posture classification.}\label{tab:posture}
+  %\noindent\makebox{%
+%\begin{tabular}{1\textwidth}{ c | c | c | c | c | c | c}
+  \renewcommand\arraystretch{0.3}
   \caption{The confusion matrix of body posture classification.}\label{tab:posture}
-  \noindent\makebox{%
-\begin{tabularx}{1\textwidth}{ c | c | c | c | c | c | c}
+\begin{tabular}{c| c | c | c | c | c | c}
    \cline{1-7}
    &\multicolumn{1}{ c|}{ }
    & \multicolumn{4}{ c|}{ }\\
@@ -65,7 +68,7 @@ Then to test the overall sleep posture detection performance, we calculate the d
     &   {Precision}    &   {97.3 \%}   &   {98.0\%}   &   {99.5\%}   &   {96.4\%}    \\
     & & & & & \\
     \cline{1-7}
-   \end{tabularx}}
+   \end{tabular}
 \end{table}
 
 \subsubsection{Performance of body rollover counting}

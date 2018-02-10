@@ -13,25 +13,24 @@ smartphone. Sleep data are collected using smartwatches sensors. Our work exploi
 off-the-shelf smarwatches. Specifically, we use the accelerometer and gyroscope to collect body movement data, the microphone to measure
 acoustic data, the ambient light sensor for illumination conditions, the orientation sensor for calibration. The collected data are
 transmitted to a smartphone via Bluetooth. We propose a set of new analysis and algorithms to effectively detect sleep events from the
-collected data. \FIXME{Table~\ref{}} lists the set of sleep events supported by \systemname.
+collected data. Table~\ref{tab:test} lists the set of sleep events supported by \systemname.
 
-\begin{table}[htbp]
- \caption{\label{tab:test}Sleep events supported by \systemname}
+\begin{table}[t!]
+ \caption{\label{tab:test}Sleep events targeted in this work}
  \centering
- \begin{tabular}{cc}
+ \begin{tabular}{ll}
   %\toprule
-  \hline
+  \toprule
   \textbf{Event}& \textbf{Type} \\
-  %\midrule
- \hline
- Sleep posture & Supine, Left lateral, Left lateral, Prone\\
- Hand position & Head, Chest, Abdomen\\
- Body rollover & Count\\
- Micro body movement& Hand moving, Arm raising, Body trembling \\
- Acoustic event & Snore, Cough, Somniloquy  \\
+  \midrule
+\rowcolor{Gray}  Sleep postures & Supine, Left lateral, Left lateral, Prone\\
+ Hand positions & Head, Chest, Abdomen\\
+\rowcolor{Gray} Body rollover & Count\\
+ Micro body movements& Hand moving, Arm raising, Body trembling \\
+\rowcolor{Gray} Acoustic events & Snore, Cough, Somniloquy  \\
  Illumination condition & Strong, Weak  \\
- % \bottomrule
- \hline
+  \bottomrule
+ %\hline
  \end{tabular}
 \end{table}
 

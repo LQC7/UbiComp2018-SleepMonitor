@@ -1,6 +1,10 @@
 \section{MOTIVATION}\label{Sec:motivation}
-In this section, we will explain our system motivation.
-Sleep takes most of the time in a person's life, and a good sleep plays a very important role throughout the day. Sleep can help people restore the body's function, store energy, and repair damaged cells. According to medical reports, good sleep can make the body and mind get appropriate rest and conditioning, promote metabolism simultaneously. If the lack of sleep time or poor sleep environment for a long time will cause mental malaise, inattention, and even life-threatening. So how to create high sleep quality is essential and necessary. Therefore, to improve the quality of sleep, first of all, we should clarify the factors that affect the quality of sleep. Then, we find a standard to assess the quality of sleep to help people improve sleep.
+In this section, we will explain our system motivation. Sleep takes most of the time in a person's life, and a good sleep plays a very
+important role throughout the day. Sleep can help people restore the body's function, store energy, and repair damaged cells. According to
+medical reports, good sleep can make the body and mind get appropriate rest and conditioning, promote metabolism simultaneously. If the
+lack of sleep time or poor sleep environment for a long time will cause mental malaise, inattention, and even life-threatening. So how to
+create high sleep quality is essential and necessary. Therefore, to improve the quality of sleep, first of all, we should clarify the
+factors that affect the quality of sleep. Then, we find a standard to assess the quality of sleep to help people improve sleep.
 
 According to our survey, we can classify the factors that affect sleep quality into the following, which is why our system selects some of these events for detection.
 \begin{itemize}
@@ -10,7 +14,17 @@ According to our survey, we can classify the factors that affect sleep quality i
   \item Psychological factors: psychological factors are also one of the important reasons that affect the quality of sleep. During the daytime, people are mainly awakened by their daily activities. This is awakening. When people sleep at night, they mainly show up as a sleeping substance, which results in depression and sleep. If the excitement and inhibition can not maintain a certain balance to complete the awakening and sleep conversion, it will have insomnia and other symptoms. what's more, individuals of all ages who experience stress, anxiety, and depression tend to find it more difficult to fall asleep \cite{mood2003,light2007,mood2015}. For this factor, we can use the way of asking questions to record the user's psychological state before sleep
 \end{itemize}
 
-In addition to these events, we also considered the body rollover event during sleep, as turning over is also a necessary exercise during sleep \cite{rollover2014,rollover201408}. We can get some reflections of sleep status by counting the number of body rollover during a whole night. And we can understand the user's detailed sleep information by detecting  micro body movement (hand moving, arm raising, and body trembling) during sleep.
+In addition to these events, we also considered the body rollover event during sleep, as turning over is also a necessary exercise during
+sleep \cite{rollover2014,rollover201408}. We can get some reflections of sleep status by counting the number of body rollover during a
+whole night. And we can understand the user's detailed sleep information by detecting  micro body movement (hand moving, arm raising, and
+body trembling) during sleep.
 
-According to our investigation, The quality of sleep is largely determined by the percentage of different sleep stages throughout the sleep \cite{iSleep,gu2016sleep}, so we can segment the user's entire sleep process into sleep stages and calculate the proportion of each sleeping stage in the whole sleep process, in order to assess the quality of sleep.  Sleep stage refers to the three main stages, namely Rapid Eye Movement (also called dream stage), light sleep stage and deep sleep stage. The light sleep and deep sleep are also called non-Rapid Eye Movement (NREM). And the division of the sleep stage is based on the fact that sleepers usually exhibit distinguishable physical activities in different sleep stages \cite{ancoli2003role}. For example, body trembling and somniloquy often occur in REM while large body movements and snoring are more prone to occur in the deep sleep stage, and the roll-over frequency can also help us to classify the sleep stage \cite{rollover2007}. So we divide the sleep stage based on detecting these specific events  that belong to different stages of sleep. In addition, the quality of sleep is also affected by age, sleep mate and other factors, we will further consider in future work.
-
+According to our investigation, The quality of sleep is largely determined by the percentage of different sleep stages throughout the sleep
+\cite{iSleep,gu2016sleep}, so we can segment the user's entire sleep process into sleep stages and calculate the proportion of each
+sleeping stage in the whole sleep process, in order to assess the quality of sleep.  Sleep stage refers to the three main stages, namely
+Rapid Eye Movement (also called dream stage), light sleep stage and deep sleep stage. The light sleep and deep sleep are also called
+non-Rapid Eye Movement (NREM). And the division of the sleep stage is based on the fact that sleepers usually exhibit distinguishable
+physical activities in different sleep stages \cite{ancoli2003role}. For example, body trembling and somniloquy often occur in REM while
+large body movements and snoring are more prone to occur in the deep sleep stage, and the roll-over frequency can also help us to classify
+the sleep stage \cite{rollover2007}. So we divide the sleep stage based on detecting these specific events  that belong to different stages
+of sleep. In addition, the quality of sleep is also affected by age, sleep mate and other factors, we will further consider in future work.

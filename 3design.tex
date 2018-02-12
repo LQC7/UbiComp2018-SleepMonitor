@@ -95,13 +95,13 @@ In detail, we found that even the abdomen position, due to the specific location
 In order to solve this problem, we decided to convert the acceleration data based on the wristwatch coordinate system into the data in the torso coordinate system. Because we can know that when the person is in the supine position, the abdomen and the chest will move up and down due to breathing, that is, move along the z-axis direction of the torso coordinate system. We express the triaxial acceleration data as $Acc_w$ = [$X_w$, $Y_w$, $Z_w$] in the wristwatch coordinate system and $Acc_t$ = [$X_t$, $Y_t$, $Z_t$] in the torso coordinate system, as shown in Fig. \ref{fig:watch}. And the watch coordinate system ({[$X_w$, $Y_w$, $Z_w$]}) is determined by the position of the watch. Our coordinate alignment aims to find a rotation matrix R to align the watch¡¯s coordinate system to the torso coordinate system ({[$X_t$, $Y_t$, $Z_t$]}) and R can be obtained by the three-axis direction information in the orientation sensor. After the coordinate system is aligned, the angle between the y-axis of the wristwatch coordinate system and the y-axis of the torso coordinate system is 180 degrees.
 
 \begin{equation}
-      X_t=(X_w\cos\gamma + Y_w\sin\gamma)\cos\theta + (Y_w\cos\sigma + Y_w\sin\sigma)\sin\theta,
+      X_t  = (X_w {\cos\gamma} + Y_w{\sin\gamma}){\cos\theta} + (Y_w\cos\sigma + Y_w\sin\sigma)\sin\theta,
 \end{equation}
 \begin{equation}
-      Y_t=-((Y_w\cos\sigma + Y_w\sin\sigma)\cos\theta - (X_w\cos\gamma + Y_w\sin\gamma)\sin\theta),
+      Y_t = -((Y_w\cos\sigma + Y_w\sin\sigma)\cos\theta - (X_w\cos\gamma + Y_w\sin\gamma)\sin\theta),
 \end{equation}
 \begin{equation}
-      Z_t=(Z_w\cos\gamma - Z_w\sin\gamma)\cos\sigma - (Z_w\cos\gamma - Z_w\sin\gamma)\sin\sigma,
+      Z_t = (Z_w\cos\gamma - Z_w\sin\gamma)\cos\sigma - (Z_w\cos\gamma - Z_w\sin\gamma)\sin\sigma,
 \end{equation}
 
 $\theta$, $\sigma$ and $\gamma$ are the x, y and z axis data of the orientation sensor respectively, representing the direction angle, the tilt angle and the roll angle collected from the orientation sensor. After the alignment of the coordinate system, we can see from Fig. \ref{fig:cordi} that the z-axis shows a periodic signal with significant fluctuations, while the x- and y-axis data undergo smaller changes around zero, which is consistent with the actual situation that when the person is in the supine posture with the abdomen up and down caused by respiratory.
@@ -170,7 +170,7 @@ Except for the large body movement like rollover, there are some involuntary bod
 
 The way of detecting micro movement is different from the method of detecting the body rollover, we first need to consider the influence of inherent accelerometer¡¯s noise. In addition to the appropriate data preprocessing, we need to set an appropriate threshold to classify the accelerations of micro body movements and noises. To set an effective threshold, we conduct extensive experiments across 10 volunteers. In each experiment, the volunteer is asked to wear a smartwatch and enables the accelerometer embedded in smartwatch to calculate the corresponding acceleration variance trace of the micro body movement. we smooth the acceleration along the three axes using Moving Average filter, and calculate Root Sum Square (RSS) to merge them.
 \begin{equation}
-      Rss(t)=\sqrt{(acc_x(t))^{2}+(acc_y(t))^{2}+(acc_z(t))^{2}},
+      Rss(t) =\sqrt{(acc_x(t))^{2}+(acc_y(t))^{2}+(acc_z(t))^{2}},
 \end{equation}
 $acc_x(t)$, $acc_y(t)$ and $acc_z(t)$ represent the accelerometer sample value of x-axis, y-axis and z-axis at time stamp t respectively. And then we can obtain the acceleration variance.
 \begin{equation}
@@ -218,7 +218,7 @@ In order to identify different acoustic events accurately, we select the short-t
 \end{equation}
 $N$ is the window length. As we can see that the short-term energy is the weighted sum of squared frame sample. The short-term energy can be used to distinguish the segment of unvoiced and voiced sound. It also can be used to differentiate speech segment and noise segment  in  case of relatively high signal to noise ratio (SNR). The zero-crossing rate is computed as:
 \begin{equation}
-  Z_i=\frac{1}{2}\sum\nolimits_{j=0}^{N}|sgn[x_i(j)]-sgn[x_i(j-1)]|.
+  Z_i = \frac{1}{2}\sum\nolimits_{j=0}^{N}|sgn[x_i(j)]-sgn[x_i(j-1)]|.
 \end{equation}
 It indicates the number of times, which the acoustic signal waveform passes through the horizontal axis (zero level). We carry out an interesting recognition experiment using the microphone built in smartwatch to detect the sound of people during sleep and effectively identify different acoustic events. We focus on three common acoustic events: snore, cough and somniloquy. Ten volunteers worn the smartwatches during sleep to record the acoustic data. We manually label the data with different acoustic events. Fig. \ref{acoustic} shows the acoustic characteristics of  three events. There are six times snore event, two consecutive cough event and somniloquy event.
 %The sample rate is 22050 Hz.
@@ -236,19 +236,17 @@ It indicates the number of times, which the acoustic signal waveform passes thro
 In conclusion, the ``interval'', ``duration'' and ``frequency'' of acoustic events can be used as three unique features. Based on the above three observations, our acoustic event recognition algorithm involves the following two steps. First, in order to estimate the interval and frequency of a acoustic event, we perform the peak detection. We use the short-term average energy to calculate the peak value of the acoustic signal. When the peak exceeds a certain threshold, such as 3 dB in this paper, we record the position of each peak and calculate the interval between two consecutive peaks. Next, we can estimate the frequency of a acoustic event by counting the number of peaks over a time window. Second, to estimate the duration of the acoustic event, we perform the start-point and end-point detection.
 
 Traditional end-point detection algorithm \cite{stowell2015detection}, however, uses a fixed double threshold and must be obtained by a large number of data samples, which has two drawbacks. First, the fixed double threshold may cause error detection at the beginning of acoustic event. Second, the requirement of a large number of data samples would lead to large system latency. To deal with those problems, we introduce an improved end-point detection method, which improves the detection accuracy and reduces the number of data samples. The proposed method has a adaptive threshold, in detail, Since the first few frames and the last few frames are mostly mute or background noise, we select the first five frames and the last five frames to calculate their short-term energy, which are denoted as $E_s$ and $E_e$, respectively. And then the two are combined to obtain the mean $E_n$ as the estimated energy value of the noise segment.Let the maximum value of the short-term energy over all frames denoted as $\max (E)$. Then, the average short-term energy $DE$ is given as:
-\begin{equation}
-      E_n=\frac{(E_s+E_e)}{2},
-\end{equation}
-\begin{equation}\label{eq:DE}
-      DE=\max (E)-E_n.
-\end{equation}
+\begin{eqnarray}
+      &E_n = \frac{(E_s+E_e)}{2}, \\
+      &DE = \max (E)-E_n.\label{eq:DE}
+\end{eqnarray}
 
 So we can use $EH$ and $EL$ to represent the high and low threshold of short-term energy, which are given as:
 \begin{equation}
-      EH=0.1\times DE+E_n,
+      EH=0.1 \times DE+E_n,
 \end{equation}
 \begin{equation}
-    EL=0.06\times DE+E_n,
+    EL=0.06 \times DE+E_n,
 \end{equation}
 
  As a result, we can reduce the number of data samples required for detection. Moreover, in order to avoid the interference of sudden noise, we set the minimum length of the signal segment and count the length of the signal during the search for the start and end point. Finally, if the signal length is less than the set minimum, it is considered as a noise segment. The results of the start-point and end-point detection are shown in Fig. \ref{acoustic}, we calculate the length of each speech segment and calculate their averages as the duration of the acoustic event. Last, we count the number of peak points to determine whether it meets the third key observation or not.
@@ -304,7 +302,7 @@ Studies have shown that there is a significant interaction between illuminance l
 However, the light sensor may be obscured, which leads to large errors in measuring the illumination level. For example, a user¡¯s smartwatch may be covered under quilt when he/she turned over unconsciously, and thus the illumination readings on the smartwatch may not reflect the real lighting situation. To deal with this problem, the key is that the illumination would drop suddenly when the smartwatch is covered by other objects. There are two possibilities for the sudden drop in light intensity. For most smartwatches, the light sensors are usually installed in the front face of it. The first case is the indoor lighting facilities are closed. The second case is the wrist turned so that the back of the hand become downward, thus blocking the light sensor in front of the smartwatch. To avoid this erroneous illumination condition measurement, we detect whether the user is performing a wrist flip over a period of time during the intensity plummeting. We detect the wrist flip based on two aspects: (i) the rotation angle of smartwatch; (ii) wether the light intensity maintain stable after the sharp drop. If the wrist flips, we use the average of the previous light intensity as the intensity of the time period. It should be noted that, because the illumination condition detection algorithm is relatively simple, it is not explained in the experimental part.
 
 \subsection{Sleep stage and quality}
-Sleep is a cyclical process composed of three stages: rapid eye movement (REM) stage, light sleep stage and deep sleep stage. The entire sleep process can be divided into many sleep cycles, in each sleep cycle, the sleeper first experienced a transition from light sleep to deep sleep, and then enter the REM. However, the sleep stage can also jump from light sleep to REM or deep sleep directly from REM.To estimate the sleep stage, we use the HMM model \cite{johnson2010hidden} since different sleep stages have potential conversion probabilities. Usually, when a user is in different sleep stages, he/she will have different sleep-related activities.For example, a person may roll over in bed when he/she is in light sleep stage, and keep motionless when he/she is in deep sleep stage. And when he/she get into the deep sleep, it will appear snoring, body trembling, etc., in the meanwhile, the breathing amplitude larger than when he/she sleep in the light stage. Thus, based on these features,we use all the detected sleep-related activities as the HMM model input. And we use a series of sleep events as observation sequence, corresponding to the sleep stage as an implicit state sequence, first using maximum likelihood estimation method for parameter estimation, the state transition matrix and the confusion matrix, and then use the Viterbi algorithm \cite{viterbi} can be obtained A series of implicit state sequences corresponding to observed sequences. That is to say that  based on HMM model, we can estimate the sleep stage during a time window, such as 2 hours. Finally, we can get the durations of all sleep stage over the whole sleep process.
+Sleep is a cyclical process composed of three stages: rapid eye movement (REM) stage, light sleep stage and deep sleep stage. The entire sleep process can be divided into many sleep cycles, in each sleep cycle, the sleeper first experienced a transition from light sleep to deep sleep, and then enter the REM. However, the sleep stage can also jump from light sleep to REM or deep sleep directly from REM. To estimate the sleep stage, we use the HMM model \cite{johnson2010hidden} since different sleep stages have potential conversion probabilities. Usually, when a user is in different sleep stages, he/she will have different sleep-related activities. For example, a person may roll over in bed when he/she is in light sleep stage, and keep motionless when he/she is in deep sleep stage. And when he/she gets into the deep sleep, it will appear snoring, body trembling, etc. In the meanwhile, the breathing amplitude will be larger compared with the light stage. Thus, based on these features, we use all the detected sleep-related activities as the HMM model input. And we use a series of sleep events as observation sequence, corresponding to the sleep stage as an implicit state sequence, first using maximum likelihood estimation method for parameter estimation, the state transition matrix and the confusion matrix, and then use the Viterbi algorithm \cite{viterbi} to acquire a series of implicit state sequences corresponding to observed sequence. As a result, we can estimate the sleep stage during a time window, such as 2 hours. Finally, we can get the durations of all sleep stages over the whole sleep process.
 
 Further, to quantize the quality of a sleep, we use the Sleep Quality Report model introduced in \cite{gu2016sleep}. Let $SQ$ be the value of the sleep quality, then $SQ$ is given as follow:
  \begin{equation}

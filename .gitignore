@@ -227,3 +227,6 @@ TSWLatexianTemp*
 
 SleepGuard.pdf
 *.aux
+
+*.gitignore~
+setup.tex

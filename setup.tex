@@ -1,19 +1,22 @@
 \section{Evaluation Methodology}
 \subsection{Implementation}
-We prototype and evaluate \systemname on a Huawei Smartwatch 2 wearable device. The smartwatch is equipped with a Quad-core Cortex-A7 processor at 1.1 GHz.  It runs Android Wear 2.0 operating system. We use \FIXME{four} sensors provided by the smartwatch: the
-accelerometer, gyroscope, microphone and \FIXME{light sensor}. The collected sensor data are sent via Bluetooth to a XiaoMI Note2 Android smartphone for post-processing and event detection. 
-\textcolor{blue}{When \systemname detects the light off event and no movement within 30 minutes, it determines that the user was fall asleep and estimates the beginning body posture and hand position. After that, each time \systemname monitors a movement with sensory data exceeding the experienced threshold , it  determines the user's body posture, rollover, hand position, micro body movement, etc. With those detected events in different times, the sleep stages are decided through the HMM model.}
+We prototype and evaluate \systemname on a Huawei Smartwatch 2 wearable device. The smartwatch is equipped with a Quad-core Cortex-A7
+processor at 1.1 GHz.  It runs Android Wear 2.0 operating system. We use four sensors of the smartwatch: the accelerometer, gyroscope,
+microphone and light sensor. The collected sensor data are sent via Bluetooth to a XiaoMI Note2 Android smartphone for post-processing and
+event detection.
+
+\systemname starts tracking sleep events when it detects that the light is off and there has been no body movement for 30 minutes. As part
+of an initialization process, \systemname estimates the initial body posture and hand position. It then uses these as a starting point to
+monitor sleep events like the body posture, rollovers, hand positions and body movements.
 
 
-\begin{figure}[!thbp]
+
+\begin{figure}[!t]
 	\centering
 	\includegraphics[width=0.52\linewidth]{Figures/setup.pdf}
-	\caption{Deployment setup.}\label{fig:setup}
+	\caption{Experimental setup in one of our participants' home. }\label{fig:setup}
 \end{figure}
 
-\FIXME{ZW: here we should detail our experimental setup e.g. the environmental settings, how do we recruit the users, the mixture of the
-users, what are the competitive models that we compare with, how do we report data (e.g. do we apply any statistical methods to remove the
-outliers?), etc.}
 
 
 %\section{Experimental Setup} {\systemname} is implemented on the HuaWei Smartwatch 2. The programming platform is JAVA. For simplification,
@@ -35,11 +38,23 @@ outliers?), etc.}
 
 
 \subsection{User Participation} We have recruited 15 volunteers to participate in our experiments. Our
-participants include 6 males and 9 females at the age of between 15 and 60 years old. Two of our participants have been diagnosed with
-long-term, on-going sleep-related disorders, and one participant has described that his sleep is significantly affected by snoring. These
-three participants are our focus group.
+participants include 6 males and 9 females, whose age spans 15 to 60 years. Two of our participants have been diagnosed with long-term,
+on-going sleep-related disorders, and one participant has described that his sleep is significantly affected by snoring. The rest of our
+participants report their sleep quality as up and down and they could have poor sleeps from time to time.
 
 \subsection{Experimental Setup}
-After obtaining IRB approval, we have conducted our experiments over a two-week period. During the experiment, these volunteers slept alone in their own bedrooms and each of them slept at least 6 hours per day. Moreover, each participant is asked to wear a smartwatch on his/her wrist. As shown in Fig. \ref{fig:setup}, we put three cameras on the ceiling to obtain the groud truth of sleep postures, hand positions, body rollover count and micro body movements. The ground truth are manully labeled. We compare the performance of those detected events with the smartphone-based work---Sleep As Android \cite{SleepAndroid}. Thus we put a smartphone beside
-the user's body. Considering that there is no absolute ground truth to detect sleep stage and the operations of other professional medical equipments are complicated, we asked the user to wear the most advanced smartwatch---Fitbit Charge2, and used the reported sleep stages as the ground truth.  
-\FIXME{ZW: I will come back to this experimental setup section later.}
+After obtaining IRB approval and consents of our participants, we have conducted our experiments at 15 homes over a two-week period. We
+collected \FIXME{200} sets of nocturnal sleep data from our participants. During the experiment, our volunteers slept alone in a bedroom at
+home. Our volunteers slept at least 6 hours per day.
+
+
+Our participants are asked to wear a smartwatch on their wrists. Fig.~\ref{fig:setup} shows the experimental setup where we placed three
+video cameras on the ceiling to monitor the user's sleep activities. The cameras have night vision and thus can record high-quality videos
+at nights. Our participants are asked to wear a smartwatch on their wrists. Fig.~\ref{fig:setup} shows the experimental setup where we
+placed three video cameras on the ceiling to monitor the user's sleep activities. The cameras have night vision and thus can record
+high-quality videos at nights. We inspect the video footage to manually label the user's sleep activities and use these as the ground truth
+to evaluate \systemname. We use the sleep stages reported by Fitbit Charge2 which is proven to be accurate in monitoring user's sleep
+stages~\cite{}.
+
+We also compare our approach against a smartphone-based sleep monitoring app, Sleep as Android~\cite{SleepAndroid}. To provide a fair
+compaction, we also place a smartphone next to the user's body on the bed to collect the data needed by Sleep as Android.

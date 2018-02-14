@@ -1,19 +1,20 @@
-\subsection{System Overview}
+%\subsection{Overview of \systemname}
 
-\begin{figure}
-  \centering
+%\begin{figure}
+%  \centering
   % Requires \usepackage{graphicx}
-  \includegraphics[width=0.7\textwidth]{figures/overviewd.pdf}\\
-  \caption{Overview of our 2-stage approach. Sleep data are collected through smartwatch sensors, which are then passed to be processed by a mobile app
-  to detect sleep events.}\label{fig:overview}
-\end{figure}
+ % \includegraphics[width=0.7\textwidth]{figures/overviewd.pdf}\\
+ %\caption{Overview of our 2-stage approach. Sleep data are collected through smartwatch sensors, which are then passed to be processedby a mobile app
+%  to detect sleep events.}\label{fig:overview}
+%\end{figure}
 
-Figure~\ref {fig:overview} depicts our 2-stage approach that involves collecting data using a smartwatch and sleep event detection using a
-smartphone. Sleep data are collected using smartwatches sensors. Our work exploits a wide range of sensors that are common on commercial
-off-the-shelf smarwatches. Specifically, we use the accelerometer and gyroscope to collect body movement data, the microphone to measure
-acoustic data, the ambient light sensor for illumination conditions, the orientation sensor for calibration. The collected data are
-transmitted to a smartphone via Bluetooth. We propose a set of new analysis and algorithms to effectively detect sleep events from the
-collected data. Table~\ref{tab:test} lists the set of sleep events supported by \systemname.
+\systemname is a novel smartwatch-based sleep monitoring system that aims at estimating sleep quality and capturing rich information about behaviours and events occuring during sleep. By capturing this information, \systemname can analyze potential reasons for sleep problems and provide the user with suggestions on how to improve their sleep routine or sleep environment. To achieve its design goal, \systemname exploits a wide range of sensors that are common on commercial off-the-shelf smarwatches: (i) accelerometer, gyroscope, and orientation sensor are used to collect body and hand movements; (ii) microphone is used to measure level of ambient noise and to capture acoustic events; and (iii) ambient light sensor is used to monitor illumination within the sleep environment. The different sensors and information extracted from them are summarized in Table~\ref{tab:test}. In the following we discuss the different subcomponents of \systemname in detail. 
+
+%acoustic data, the ambient light sensor for illumination conditions, the orientation sensor for calibration. The collected data are
+%transmitted to a smartphone via Bluetooth. We propose a set of new analysis and algorithms to effectively detect sleep events from the
+%collected data. Table~\ref{tab:test} lists the set of sleep events supported by \systemname.
+%Figure~\ref{fig:overview} depicts our 2-stage approach that involves collecting data using a smartwatch and sleep event detection using a
+%smartphone. Sleep data are collected using smartwatches sensors. Our work 
 
 \begin{table}[t!]
  \caption{\label{tab:test}Sleep events targeted in this work}

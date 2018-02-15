@@ -1,79 +1,88 @@
 \section{INTRODUCTION}\label{sec:1introduction}
 
 Sleep plays a vital role in good health and personal well-being throughout one's life. Lack of sleep or poor quality of sleep can lead to
-serious, sometimes life-threatening, health problems~\cite{altena2008sleep,chandola2010effect,lallukka2016contribution}, decreased level of 
-cognitive performance~\cite{alhola07sleep,akerstedt07altered}, and changes in mood and feelings of personal well-being~\cite{paunio09longitudinal,pilcher97sleep}. 
-Besides having an adverse effect to individuals, poor quality of sleep has a significant economic burden, among others, through decreased productivity and medical and social costs 
-associated with treatment of chronic sleep disorders~\cite{hafner17why}. Indeed, to highlight the significance of sleep quality, the Centre for Disease Prevention (CDC) has declared insufficient sleep 
-as a public health problem in the US\footnote{\url{https://edition.cnn.com/2015/02/18/health/great-sleep-recession/index.html}} and the significance of ensuring sufficient sleep has also been 
-acknowledged in other industrialized countries. 
+serious, sometimes life-threatening, health problems~\cite{altena2008sleep,chandola2010effect,lallukka2016contribution}, decrease level of cognitive performance~\cite{alhola07sleep,akerstedt07altered}, and affect mood and feeling of personal well-being~\cite{paunio09longitudinal,pilcher97sleep}.
+Besides having an adverse effect to individuals, insufficient or poor quality sleep has a significant economic burden, among others, through decreased productivity, and medical and social costs associated with treatment of sleep disorders~\cite{hafner17why}. Indeed, to highlight the significance of sleep quality, the Centre for Disease Prevention (CDC) has declared insufficient sleep
+as a public health problem in the US\footnote{\url{https://edition.cnn.com/2015/02/18/health/great-sleep-recession/index.html}}, and the concern regarding adverse sleep quality is widely shared within other industrialized countries.
 
-The quality of sleep depends on many factors with sleep environment and behaviours during and before sleep being some of the most important ones. For example, intensity of ambient light~\cite{hood04determinants}, temperature, and noisiness of the environment can decrease sleep quality. Similarly, including the sleeping environment such as the light intensity and the ambient temperature, the user's
-breathing patterns, posture during sleep, and routines surrounding the bedtime. By capturing and modeling these factors, sleep monitoring can help users to assess
-and understand their sleeping pattern, and provide feedback on how the change of the sleeping environment and behavior affect the sleep
-quality.
+To improve quality of sleep, off-the-shelf consumer technologies for \emph{sleep monitoring} have recently emerged as a popular way to obtain information about one's sleeping patterns~\cite{ko15consumer}. By using sensors available on these
+devices, behaviours and routines associated with sleeping can be captured and modelled. This in turn can help users understand their sleep behaviour and provide feedback or suggestions how to improve their sleep, for example, by changing routines surrounding sleep activity or improving the sleeping environment. What makes self monitoring particularly attractive is the non-invasive nature of the sensing compared to the traditional, clinical approach which requires sleeping within a clinical environment and being equipped with dedicated sensing equipment, e.g., relying on EKG and EEG signals. Examples of consumer-grade sleep monitors range from apps running on smartphones or tablets to smartwatches and 
+specialized wearable devices~\cite{zeo,Jawbone,SleepAndroid,fitbit,gu2016sleep,sleepmonitor}. 
 
-Traditionally, sleep monitoring had to be performed in a clinic environment using dedicated medical equipment.  Modern mobile devices such
-as smartphones and wearable devices offer a new way for sleep monitoring. By utilizing the rich mobile sensors, we can track certain
-activities such as body movements or snore, and to use the tracked information to detect and model sleep
-patterns~\cite{zeo,Jawbone,SleepAndroid,fitbit,gu2016sleep}. Such an approach is known as
-\emph{actigraphy}~\cite{Actigraphy,ancoli2003role}. Compared to a clinic solution, an actigraphy approach the advantages of being lower
-cost and non-invasive, and can be performed at home on an on-going basis.
+%Sleep monitoring using consumer-grade devices is also known as \emph{actigraphy}~\cite{Actigraphy,ancoli2003role} as the key goal is to capture and characterize periods of inadct
+%Traditionally, sleep monitoring had to be performed in a clinic environment using dedicated medical equipment.  Modern mobile devices such
+%as smartphones and wearable devices offer a new way for sleep monitoring. By utilizing the rich mobile sensors, we can track certain
+%activities such as body movements or snore, and to use the tracked information to detect and model sleep
+%patterns. Such an approach is known as
+%. Compared to a clinic solution, an actigraphy approach the advantages of being lower
+%cost and non-invasive, and can be performed at home on an on-going basis.
+
+%Current solutions to consumer grade sleep monitoring predominantly are capable of estimating overall sleep quality
+Despite the popularity of consumer-grade sleep monitors, their full potential is yet to be harnessed. In particular, current consumer-grade solutions to sleep monitoring are only capable of identifying specific sleep states and estimate overall sleep quality, or to capture specific sleep disorders, without being able to capture the root causes for potential disruptions. Indeed, the quality of sleep depends on many factors with sleep environment and behaviours during and before sleep being some of the most important ones. For example, intensity of ambient light~\cite{hood04determinants}, temperature, and noisiness of the environment can decrease sleep quality. Similarly, including the sleeping environment such as the light intensity and the ambient temperature, the user's breathing patterns, posture during sleep, and routines surrounding the bedtime. Without further details of the environment and activities across sleep stages, these applications offer little help in
+understanding the characteristics of these factors, the root cause of poor sleep cannot be captured. To this end, to fully unlock the potential of consumer-grade sleep monitoring, more powerful ways of taking advantage of the rich sensor data provided by these devices are required.
+
+%new ways to take full
+%advantage of the rich sensor data provided by modern mobile devices.
+
+
+%By capturing and modeling these factors, sleep monitoring can help users to assess
+%and understand their sleeping pattern, and provide feedback on how to change the sleeping environment or routines associated with sleep.
+
 
 %like electroencephalography (EEG), \`{o}electrocardiography (ECG) and electromyography (EMG)
 
-However, existing mobile-based sleep monitoring applications fail to fully exploit the rich sensors provided by modern mobile devices. As a
-result, current mobile-based sleep monitoring systems typically only provide coarse-grained information such as the sleep duration and body
-movement. Without further details of the environment and activities across sleep stages, these applications offer little help in
-understanding the causes of poor sleep. To unlock the potential of mobile-based sleep monitoring, we need to find ways to take full
-advantage of the rich sensor data provided by modern mobile devices.
+%However, existing mobile-based sleep monitoring applications fail to fully exploit the rich sensors provided by modern mobile devices. As a
+%result, current mobile-based sleep monitoring systems typically only provide coarse-grained information such as the sleep duration and body
+%movement.
 
 
-The work presented by Gu \etal~\cite{gu2016sleep} is among the first attempts to gather  a wide range of sleep events using mobile sensors.
-There are two main drawbacks of this approach. Firstly, it requires placing the smartphone next to the user's head and ensuring the phone
-remains stationary throughout the sleeping process. This requirement often cannot be satisfied because (a) the phone is often moved during
-sleep due to body movements and (b) many users do not want to place the mobile phone too close to their body due to health risk
-concerns~\cite{StepHealth,Quorasleep}.  Secondly, their approach can only gather coarse-grained sleep data due to the way the mobile phone
-is used. Recently, Sun \etal~\cite{sleepmonitor} show that one can exploit the smartwatch sensors to monitor the respiratory  rate and body
-position. While promising, this work only captures two sleep events and thus only scratches the surface of what could be possible.
+%The work presented by Gu \etal~\cite{gu2016sleep} is among the first attempts to gather  a wide range of sleep events using mobile sensors.
+%There are two main drawbacks of this approach. Firstly, it requires placing the smartphone next to the user's head and ensuring the phone%
+%%%remains stationary throughout the sleeping process. This requirement often cannot be satisfied because (a) the phone is often moved during
+%sleep due to body movements and (b) many users do not want to place the mobile phone too close to their body due to health risk
+%concerns~\cite{StepHealth,Quorasleep}.  Secondly, their approach can only gather coarse-grained sleep data due to the way the mobile phone
+%is used. Recently, Sun \etal~\cite{sleepmonitor} show that one can exploit the smartwatch sensors to monitor the respiratory  rate and body
+%position. While promising, this work only captures two sleep events and thus only scratches the surface of what could be possible.
 
 
-\begin{figure}[!t]
-\centering
-\setlength{\belowcaptionskip}{-13pt}
-      \includegraphics[width=0.5\textwidth]{Figures/datacollect.pdf}
-  \caption{Our approach detects a wide range of sleep-related activities and events using a smartwatch.}\label{fig:datacollect}
-\end{figure}
+%\begin{figure}[!t]
+%\centering
+%\setlength{\belowcaptionskip}{-13pt}
+%      \includegraphics[width=0.5\textwidth]{Figures/datacollect.pdf}
+%  \caption{Our approach detects a wide range of sleep-related activities and events using a smartwatch.}\label{fig:datacollect}
+%\end{figure}
 
-This paper presents novel approach to gather a richer set of fine-grained sleep events. Instead of using smartphones and relying on strict,
-unrealistic assumptions, we exploit the rich sensor data provided by smartwatches to track a wider range of sleep-related activities. The
-advantages of using a smartwatch are that many users are willing to wear the device throughout the night, thus the device can remain
-relatively close to the user over the duration of sleep. The smartwatch also allows us to collect a richer set of information. The
-collected information can then be used to monitor a wider range of sleep-related events. While there are prior works on sleep monitoring
+%advantages of using a smartwatch are that many users are willing to wear the device throughout the night, thus the device can remain
+%relatively close to the user over the duration of sleep.
+
+In this paper, we contribute by presenting the design, development and evaluation of \systemname, a novel consumer-grade solution for capturing rich information
+about sleep events and the sleep environment. Our solution exploits sensor modalities available on smartwatches to track a wider range of sleep-related activities. By using a smartwatch,
+the sensors are relatively close to the user during all stages of the night, enabling detailed capture of not only sleep cycles, but body movements and environmental changes happening during the sleep period.
+The smartwatch also allows us to collect a richer set of information. The collected information can then be used to monitor a wider range of sleep-related events. While there are prior works on sleep monitoring
 based on smartwathes \cite{pombo2016ubisleep,shelgikar2016sleep,haescher2015anomaly,borazio2012combining}, these approaches only gather
 coarse-grained information and often rely on specialize devices such as pressure mattresses or image acquisition equipment. In this
-article, we demonstrate that, for the first time, smartwatches can be used to collect an extensive set of sleep-related events -- many of
+article, we demonstrate that, for the first time, using only a smartwatch, we can capture extensive set of sleep-related information -- many of
 which are not presented in prior work. Having a more comprehensive set of sleep-related events and activities will thus enable users to
 gain a deeper understanding of their sleep patterns and the causes of poor sleep.
 
-We implement our approach in a prototype system called \systemname. It gathers sleep-related activities by utilizing the commonly available
-sensors on smartwatches: the accelerometer, gyroscope, microphone and ambient light sensor, etc. It then uses the tracked information to
-infer the user's sleep posture and habits -- thing like changes of body and hand positions, as well as sound events due to e.g. snoring or
-coughing.  Collecting these data can help a user to gain a deep understanding of his/her sleeping pattern and quality, and to find ways to
-improve sleep. \FIXME{ZW: The introduction is too wordy. It needs to get to the point quicker. I will get back to this later.}
+%We implement our approach in a prototype system called \systemname. It gathers sleep-related activities by utilizing the commonly available
+%sensors on smartwatches: the accelerometer, gyroscope, microphone and ambient light sensor, etc. It then uses the tracked information to
+%infer the user's sleep posture and habits -- thing like changes of body and hand positions, as well as sound events due to e.g. snoring or
+%coughing.  Collecting these data can help a user to gain a deep understanding of his/her sleeping pattern and quality, and to find ways to
+%improve sleep. \FIXME{ZW: The introduction is too wordy. It needs to get to the point quicker. I will get back to this later.}
 
 Translating the collected sensor data to these sleeping events is non-trivial due to the changing nature of smartwatches during sleep. To
 overcome these challenges, we develop a set of new methods and analysis, specifically targeting portable mobile devices.  The key insight
 behinds {\systemname} is that the sleep quality is strongly correlated to the sleep posture, acoustic events and the illumination condition
 \cite{shelgikar2016sleep}. By exploiting the unique characteristics of sensory data produced by different sleep activities, we develop a
 series of novel algorithms to correlate the sensory data to sleep events. We then design a model to incorporate the detected events to
-infer the user's sleep stages and sleep quality. \FIXME{ZW: This one needs to be merged with the previous paragraph.}
+infer the user's sleep stages and sleep quality.% \FIXME{ZW: This one needs to be merged with the previous paragraph.}
 
- We evaluate our approach through extensive experiments involved ten uses over a period of two weeks. The experimental results
-show that {\systemname} is effective and accurate in capturing sleep-related activities, achieving an accuracy of at least 87\% (up to
-98\%) across various sleep events. We demonstrate that these fine-grained sleep data enable us to develop an accurate model to correlate
-the sleep events to various sleep stages, helping user to better understand their sleep quality. 
+We evaluate our approach through extensive experiments involved fifteen uses over a period of two weeks. The experimental results show that
+{\systemname} is effective and accurate in capturing sleep-related activities, achieving an accuracy of at least 87\% (up to 98\%) across
+various sleep events. We demonstrate that these fine-grained sleep data enable us to develop an accurate model to correlate the sleep
+events to various sleep stages, helping user to better understand their sleep quality.
 
-The main contribution of this paper is the first smartwatch-based system that can capture a wider range of sleep events with a high
+To summarize, the main contribution of this paper is the first smartwatch-based system that can capture a wider range of sleep events with a high
 accuracy. We show that, compared with existing mobile-based sleep monitoring solutions, the rich set of fine-grained sleep events given by
 our approach can better capture a user's sleep patterns and quality across sleep stages.

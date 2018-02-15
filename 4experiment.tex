@@ -18,7 +18,7 @@ We test the overall classification performance of different body postures. The g
 	\begin{minipage}{.5\textwidth}
 			\centering
 		\includegraphics[width=0.95\linewidth]{Figures/handposition_zhu.pdf}
-		\caption{Identification accuracy of hand positions}\label{fig:hand_zhu}
+		\caption{Identification accuracy of hand positions.}\label{fig:hand_zhu}
 	\end{minipage}
 \end{figure}
 
@@ -99,36 +99,30 @@ To verify the efficiency of body rollover detection algorithm, we compare each u
 \end{table}
 
 \subsubsection{Performance of hand position recognition}
-To test the recognition performance of different hand positions, {\systemname} uses the cross-validation approach presented in \ref{subsub:bodyposture} with only one user's data at a time to train the classifier and the remaining 14 users' data as the test sets. The classifier for detecting the hand movement trajectory is combined with the detection of periodic signals caused by respiration, then the hand position on the chest (or abdomen or head) can be identified. Fig. \ref{fig:hand_zhu} illustrates the accuracy of hand position across 15 users. As we can see that with just one set of training data, the accuracies for different users are all higher than 87\%. Therefore, our system can achieve a satisfied identification accuracy for different hand positions. Moreover, we find that at least four out of fifteen participants tends to put their hands on their heads when they sleep in the supine posture.  It is a bad habit and suggests the users to remove the 
-
-
-
-
-
+To test the recognition performance of different hand positions, {\systemname} uses the cross-validation approach presented in \ref{subsub:bodyposture} with only one user's data at a time to train the classifier and the remaining 14 users' data as the test sets. The classifier for detecting the hand movement trajectory is combined with the detection of periodic signals caused by respiration, then the hand position on the chest (or abdomen or head) can be identified. Fig. \ref{fig:hand_zhu} illustrates the accuracy of hand position across 15 users. As we can see that with just one set of training data, the accuracies for different users are all higher than 87\%. Therefore, our system can achieve a satisfied identification accuracy for different hand positions. Moreover, we find that at least four out of fifteen participants tend to put their hands on their heads; one participate unconsciously puts her hand on her chest which makes her have a nightmare sometimes. Those are all bad habits disrupting a good sleep.  {\systemname} can report such key findings to improve the users' sleep qualities.
 
 
 \subsubsection{Performance of micro body movement detection}
-To assess the detection accuracy of micro body movement , we manually label the ground truth  recorded by the camera during sleep, indluding hand moving, arm raising, and body trembling. We also use the accelerometer embedded in the smartphone which placed on the bed to record the occurrence of the micro body movements, so as to avoid missing some movements such as trembling shaded by the coverings (such as quilts). Fig. \ref{fig:micro_movement_zhu} illustrates the detection accuracy across 15 users. It shows that the accuracies for all users are very close, that is, there will be no major changes between users. And from Fig. \ref{fig:micro_combine}, we can see that even though the worst classification result belongs to the hand movement, the average precision and recall rate still exceed 75\%, and the average accuracy of arm raising and body trembling are 93 \%, 84\%, which indicates that the accuracy of the classification is acceptable. And our purpose of detecting micro body movement is to help us detect the sleep stage, so we are more concerned with body trembling and arm raising, and the poor accuracy of hand moving does not have a significant impact on our end result. The reason for the poor performance of hand movement and body trembling classification may be that we have fewer people to refer to when setting the threshold of the peak value. Specifically, we can further consider more different people in different situations, or set their own thresholds for each person by observing or learning each person's sleep data.
+To assess the detection accuracy of micro body movement, we manually label the ground truth  recorded by the camera during sleep, including hand moving, arm raising, and body trembling. We also use the accelerometer embedded in the smartphone which placed on the bed to record the occurrence of micro body movements, so as to avoid missing some movements such as trembling concealed by the quilt. Fig. \ref{fig:micro_movement_zhu} illustrates the detection accuracy across 15 users. It shows that the accuracies for all users are very close, that is, there will be no major changes between users. And from Fig. \ref{fig:micro_combine}, we find that even though the worst classification result belongs to the hand movement, the average precision value and recall value still exceed 75\%. The averaged accuracies of arm raising and body trembling are 93\% and 84\%, respectively. Because the training data volume for the hand movement and body trembling are small, so the performance can been improved by setting each user a threshold by collecting a longer term's sleeping data. In addition, the purpose of  micro body movement detection is to detect different sleep stages, and the hand movement usually appears in all sleep stages, thus the poor accuracy of hand moving does not have a significant impact on the final result. 
 
 
 \begin{figure}
 	\centering
 	\begin{minipage}{.5\textwidth}
-		 \includegraphics[width=0.95\linewidth]{Figures/micro_movement_zhu.pdf}
-		\caption{Detection accuracy of micro body movement.}\label{fig:micro_movement_zhu}
-		
+		 \includegraphics[width=0.85\linewidth]{Figures/micro_movement_zhu.pdf}
+		\caption{Detection accuracy of micro body movement.}\label{fig:micro_movement_zhu}	
 	\end{minipage}%
 	\begin{minipage}{.5\textwidth}
 	 \centering
-	\includegraphics[width=0.95\linewidth]{Figures/micro_combine1.pdf}
-	\caption{Micro body movement}\label{fig:micro_combine}
+	\includegraphics[width=0.85\linewidth]{Figures/micro_combine1.pdf}
+	\caption{Performance of micro body movement detection.}\label{fig:micro_combine}
 	\end{minipage}
 \end{figure}
 
 
 
  \subsubsection{Performance of acoustic events detection}
-To study the detection accuracies of different acoustic events, we compare the groundtruth recorded by the camera with the detected results by our system. Table \ref{tab:sound} shows the results across 15 test participants. We can see that the accuracy for cough event is 88.9\%, which is relative lower with regard to other three events. The reason is that different user's cough pattern are different, the pre-defined parameters used in the system does not include all possible patterns. When we train the parameters of the detection algorithm, we only collect 120 sets of nighttime sound data. The data come from 40 (21 males and 19 females) volunteers of different ages (ages 15 to 60) who are prone to snoring, coughing, or somniloquy at night. So in order to further improve the detection accuracy, we can train particular parameters for more different users.
+To study the detection accuracies of different acoustic events, we compare the ground truth recorded by the camera with the detected results by our system. Table \ref{tab:sound} shows the results across 15 test participants. We can see that the accuracy for cough event is 88.9\%, which is relative lower with regard to other three events. The reason is that different user's cough pattern are different, the pre-defined parameters used in the system does not include all possible patterns. When we train the parameters of the detection algorithm, we only collect 120 sets of nighttime sound data. The data come from 40 (21 males and 19 females) volunteers of different ages (ages 15 to 60) who are prone to snoring, coughing, or somniloquy at night. So in order to further improve the detection accuracy, we can train particular parameters for more different users.
 
 \begin{table}[!thbp]
  \tabcolsep1pt
@@ -276,7 +270,6 @@ When we detect the hand's position in the abdomen or chest, we use the magnitude
 	\end{tabular}
 \end{table}
 
-
 \subsubsection{Performance comparison}
 To our knowledge, in the current actigraphy-based work, there is no clear baseline for sleep stage detection performance for us. So we
 decided to compare {\systemname} with the sleep detection app, Sleep As Android, that has been widely used in the marketplace, in addition,
@@ -284,44 +277,44 @@ we also considered a comparison with Sleep Hunter \cite{gu2016sleep}. Table \ref
 detection, Sleep As Android can only detect light sleep stage and the deep sleep stage, so we only compared the performance of these two
 stages.
 
- \begin{table} \footnotesize
-	\centering  % 表居中
-	\renewcommand\arraystretch{0.3}
-	\caption{\textcolor{blue}{Performance Comparison}}\label{tab:comparison}
-	\begin{tabular}{c| c | c | c | c | c |}
-		\cline{2-6}
-		&\multicolumn{1}{ c|}{ }
-		&\multicolumn{2}{ c|}{ }
-		&\multicolumn{2}{ c|}{ }\\
-		%  \multirow{4}*{}
-		&\multicolumn{1}{c|}{}
-		&\multicolumn{2}{c|}{\textbf{\scriptsize Light Sleep}}
-		&\multicolumn{2}{c|}{\textbf{\scriptsize Deep Sleep}} \\
-		%&\multicolumn{5}{ c |}{\textbf{\small Prediction}} \\
-		% & \multicolumn{5}{ c |}{ } \\
-		\cline{2-6}
-		\multicolumn{1}{c|}{\textbf{}}
-		&  \multicolumn{1}{c|}{\diagbox{System}{Stage}}
-		&  \multicolumn{1}{c|}{\scriptsize Precision}
-		&  \multicolumn{1}{c|}{\scriptsize Recall}
-		&  \multicolumn{1}{c|}{\scriptsize Precision}
-		&  \multicolumn{1}{c|}{\scriptsize Recall}\\
-		\cline{2-6}
-		& & & & & \\
-		\multirow{5}{*}
-		&   \textbf{\scriptsize SleepGuard}   & $66.5\%$    &   $69.6\%$      &   $63.3\%$      &   $59.8$  \\
-		& & & & &  \\
-		\cline{2-6}
-		& & & & & \\
-		&   \textbf{\scriptsize Sleep As Android}   &   $27.8\%$      &   $35.4\%$     &   $35.7\%$      &   $50.2\%$   \\
-		\cline{2-6}
-		& & & & & \\   
-		&   \textbf{\scriptsize Sleep Hunter}   &   $66.74\%$      &   $66.11\%$     &   $60.00\%$      &   $50.73\%$   \\
-		
-		\cline{2-6}
-		
-	\end{tabular}
-\end{table}
+  \begin{table} \footnotesize
+ 	\centering  % 表居中
+ 	\renewcommand\arraystretch{0.3}
+ 	\caption{\textcolor{blue}{Performance Comparison}}\label{tab:comparison}
+ 	\begin{tabular}{c| c | c | c | c | c |}
+ 		\cline{2-6}
+ 		&\multicolumn{1}{ c|}{ }
+ 		&\multicolumn{2}{ c|}{ }
+ 		&\multicolumn{2}{ c|}{ }\\
+ 		%  \multirow{4}*{}
+ 		&\multicolumn{1}{c|}{}
+ 		&\multicolumn{2}{c|}{\textbf{\scriptsize Light Sleep}}
+ 		&\multicolumn{2}{c|}{\textbf{\scriptsize Deep Sleep}} \\
+ 		%&\multicolumn{5}{ c |}{\textbf{\small Prediction}} \\
+ 		% & \multicolumn{5}{ c |}{ } \\
+ 		\cline{2-6}
+ 		\multicolumn{1}{c|}{\textbf{}}
+ 		&  \multicolumn{1}{c|}{\diagbox{System}{Stage}}
+ 		&  \multicolumn{1}{c|}{\scriptsize Precision}
+ 		&  \multicolumn{1}{c|}{\scriptsize Recall}
+ 		&  \multicolumn{1}{c|}{\scriptsize Precision}
+ 		&  \multicolumn{1}{c|}{\scriptsize Recall}\\
+ 		\cline{2-6}
+ 		& & & & & \\
+ 		\multirow{5}{*}
+ 		&   \textbf{\scriptsize SleepGuard}   & $66.5\%$    &   $69.6\%$      &   $63.3\%$      &   $59.8$  \\
+ 		& & & & &  \\
+ 		\cline{2-6}
+ 		& & & & & \\
+ 		&   \textbf{\scriptsize Sleep As Android}   &   $27.8\%$      &   $35.4\%$     &   $35.7\%$      &   $50.2\%$   \\
+ 		\cline{2-6}
+ 		& & & & & \\   
+ 		&   \textbf{\scriptsize Sleep Hunter}   &   $66.74\%$      &   $66.11\%$     &   $60.00\%$      &   $50.73\%$   \\
+ 		
+ 		\cline{2-6}
+ 		
+ 	\end{tabular}
+ \end{table}
 
 
 As we can see, {\systemname} can not only perform better on sleep stage detection than Sleep As Android, but also detect one more sleep stage. \textcolor{blue}{As for Sleep Hunter, our system's detection ability is slightly better than its. This may be because {\systemname} detects sleep-related events with better performance and incorporates respiratory amplitude considerations. And our system can provide richer sleep data for users and take more factors that affect sleep quality into consideration, making users understand their sleep more easily and improve their sleep quality more effectively.} Further, we show our superior in function comapared with other similar sleep detection products, including Sleep As Android, Sleep Hunter, sleepMonitor \cite{sleepmonitor}, Sleeptracker \cite{sleeptracker}, Fitbit, isleep \cite{hao2013isleep}, Jawbone \cite{Jawbone},ubiSleep \cite{pombo2016ubisleep}, in Table \ref{tab:function}. As we have shown, {\systemname} can detect a wider range of sleep events to provide a better user experience.
@@ -389,22 +382,22 @@ In order to evaluate whether {\systemname} can provide help in the assessment of
    % & \multicolumn{5}{ c |}{ } \\
     \cline{2-17}
     \multicolumn{1}{c|}{\textbf{}}
-    &  \multicolumn{1}{c|}{\diagbox{System}{User}}
-    &  \multicolumn{1}{c|}{\scriptsize User 1}
-    &  \multicolumn{1}{c|}{\scriptsize User 2}
-    &  \multicolumn{1}{c|}{\scriptsize User 3}
-    &  \multicolumn{1}{c|}{\scriptsize User 4}
-    &  \multicolumn{1}{c|}{\scriptsize User 5}
-    &  \multicolumn{1}{c|}{\scriptsize User 6}
-    &  \multicolumn{1}{c|}{\scriptsize User 7}
-    &  \multicolumn{1}{c|}{\scriptsize User 8}
-    &  \multicolumn{1}{c|}{\scriptsize User 9}
-    &  \multicolumn{1}{c|}{\scriptsize User 10}
-    &  \multicolumn{1}{c|}{\scriptsize User 11}
-    &  \multicolumn{1}{c|}{\scriptsize User 12}
-    &  \multicolumn{1}{c|}{\scriptsize User 13}
-    &  \multicolumn{1}{c|}{\scriptsize User 14}
-    &  \multicolumn{1}{c|}{\scriptsize User 15}\\
+    &  \multicolumn{1}{c|}{\diagbox{System}{User ID}}
+    &  \multicolumn{1}{c|}{\scriptsize  1}
+    &  \multicolumn{1}{c|}{\scriptsize  2}
+    &  \multicolumn{1}{c|}{\scriptsize  3}
+    &  \multicolumn{1}{c|}{\scriptsize  4}
+    &  \multicolumn{1}{c|}{\scriptsize  5}
+    &  \multicolumn{1}{c|}{\scriptsize  6}
+    &  \multicolumn{1}{c|}{\scriptsize  7}
+    &  \multicolumn{1}{c|}{\scriptsize  8}
+    &  \multicolumn{1}{c|}{\scriptsize  9}
+    &  \multicolumn{1}{c|}{\scriptsize  10}
+    &  \multicolumn{1}{c|}{\scriptsize  11}
+    &  \multicolumn{1}{c|}{\scriptsize  12}
+    &  \multicolumn{1}{c|}{\scriptsize  13}
+    &  \multicolumn{1}{c|}{\scriptsize  14}
+    &  \multicolumn{1}{c|}{\scriptsize  15}\\
      \cline{2-17}
     & & & & & & & & & & & & & & & & \\
     \multirow{16}{*}

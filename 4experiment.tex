@@ -1,12 +1,14 @@
-\section{EXPERIMENTAL RESULTS}\label{sec:4experiment}
+\section{RESULTS}\label{sec:4experiment}
 In this section, we detail the evaluation results for our system.
 
-\subsection{Evaluation Results}
+\subsection{Evaluation of Subcomponents}
 We focus on the detection accuracy about five events, that are body posture, the body rollover, the hand position, the micro body movement and the acoustic events.
 %, the classification of micro body movement
 
-\subsubsection{Performance of body posture classification}\label{subsub:bodyposture}
-We test the overall classification performance of different body postures. The groundtruth of body postures are recorded by the cameras. We use a  cross-validation approach by training the classifier with the data of one user in turn and testing the rest fourteen users. The averaged accuracy for 15 cases are the final performance, as shown in Fig. \ref{fig:posture_zhu}. We observe that the posture detection accuracy is consistently high across all users, and it does not show major variations across users. This good performance benifits from the distinct characteristics of arm position under different sleeping postures.
+\subsubsection{Sleep Posture Classification Performance}
+\label{subsub:bodyposture}
+
+We test the overall classification performance of different body postures. The groundtruth of body postures are recorded by the cameras. We use a modified cross-validation approach by training the classifier with data from one user and testing the rest fourteen users. The motivation for using data from a single user as training data is to highlight the capability of \systemname to accurately characterize body posture with very little training data, while at the same time being able to generalize across users. The final performance is then calculated as the averaged accuracy across the 15 folds; as shown in Fig.~\ref{fig:posture_zhu}. We can observe that the posture detection accuracy is consistently high across all users, and does not show major variations across users. This good performance benefits from the distinct characteristics of arm position under different sleeping postures. Compared to results reported for SleepMonitor~\cite{sleepmonitor}, \systemname consistently improves performance which is mainly due to the template-based classifier that we use to verify classifications of the prone and supine states. In particular, \systemname achieves around $5$ percentage units higher performance on the prone state than SleepMonitor and overall has lower false positive rate. 
 
 \begin{figure}
 	\centering

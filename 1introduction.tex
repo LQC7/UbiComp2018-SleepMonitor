@@ -66,15 +66,14 @@ The present paper contributes by presenting the design and development of \syste
 
   % \FIXME{ZW: This one needs to be merged with the previous paragraph.}
   
-We evaluate \systemname through rigorous and extensive benchmark experiments conducted on data collected from fifteen participants during a two week monitoring period. The results of our experiments demonstrate that \systemname can accurately characterize body motions and movements during sleep, as well as capture different acoustic events. Specifically, the lowest accuracy for \systemname in our experiments is 87\%, with the best event detection accuracy reaching up to 98\%. We also evaluate the overall performance of \systemname, demonstrating that it can accurately detect various sleep stages, helping users to better understand their sleep quality.
+We evaluate \systemname through rigorous and extensive benchmark experiments conducted on data collected from fifteen participants during a two week monitoring period. The results of our experiments demonstrate that \systemname can accurately characterize body motions and movements during sleep, as well as capture different acoustic events. Specifically, the lowest accuracy for \systemname in our experiments is 87\%, with the best event detection accuracy reaching up to 98\%. We also evaluate the overall performance of \systemname, demonstrating that it can accurately detect various sleep stages, helping users to better understand their sleep quality. As part of our evaluation, we demonstrate that sleep quality estimates of \systemname closely match with subjective assessments of sleep quality and are comparable to quality estimates produced by a commercial state-of-the-art solution, Fitbit, that monitors a narrower range of sleep events and uses a larger and more invasive set of sensor modalities.  
 
-\paragraph{Summary of Contributions}
+\noindent \paragraph{Summary of Contributions} 
 
-The contributions of the paper are summarized as follows:
 \begin{itemize}[noitemsep]
-	\item We present the design and development of \systemname, a holistic sleep monitoring solution that relies {\em solely} on sensor data available on contemporary smartwatch to capture a wide range of sleep-related information.
+	\item We present the design and development of \systemname, the first holistic sleep monitoring system to rely solely on sensors available in an off-the-shelf smartwatch to capture a wide range of sleep information that characterizes overall sleep quality, user behaviours during sleep, and the sleep environment.  
 	\item We develop novel algorithms for capturing sleep-related information on smartwatches taking into consideration changes in orientation and location of the device during different parts of the night.
-	\item We extensively evaluate the performance of \systemname using measurements collected from two-week monitoring of $15$ participants. Our results demonstrate that \systemname can accurately capture a wide range of sleep events, estimate different sleep stages, and produce meaningful information about overall sleep quality.
+	\item We extensively evaluate the performance of \systemname using measurements collected from two-week monitoring of $15$ participants. Our results demonstrate that \systemname can accurately capture a wide range of sleep events, estimate different sleep stages, and produce meaningful information about overall sleep quality. We also compare the sleep quality estimates of \systemname against subjective assessments, demonstrating high level of agreement. 
 \end{itemize}
 
 %To summarize, the main contribution of this paper is the first smartwatch-based system that can capture a wider range of sleep events with a high

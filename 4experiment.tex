@@ -24,8 +24,8 @@ We test the overall classification performance of different body postures. The g
 	\end{minipage}
 \end{figure}
 
-\begin{table}[!thbp]
-	\tabcolsep1pt
+\begin{table}[!thbp]\footnotesize
+%	\tabcolsep1pt
 	\centering  % 表居中
 	%\renewcommand\arraystretch{0.277}
 	%\caption{The confusion matrix of body posture classification.}\label{tab:posture}
@@ -84,12 +84,12 @@ To have a deep evaluation about the sleep posture detection, we randomly choose 
 \subsubsection{Performance of body rollover counting}
 To verify the efficiency of body rollover detection algorithm, we compare each user's  body rollover number detected by {\systemname} with the groundtruth recorded by camera. The performance is showed in Table \ref{tab:rollver}. We can see that User 3, User 4 and User 13 has an unusually high number. For User 3 and User 4, they have difficulty in falling asleep due to the sleep disorder.  User 13 needs to rollover frequently because of  his loundly snoring. For all the 15 users, the detection accuracies are all very high, and the least one is still 87\%. Thus {\systemname} can accurately distinguish the large hand movement from the body rollover in bed. What's more, detecting errors in body rollover events will not have a significant impact on our end result, because the division of  sleep stages is a comprehensive consideration of all the detected features in each stage, such as micro body movement and acoustic events.
 
-\begin{table}[!thbp]
+\begin{table}[!thbp]\footnotesize
   %\centering  % 表居中
-  \tabcolsep 1pt
+ % \tabcolsep 1pt
   %\arrayrulewidth1pt
   \caption{Detection accuracy of body rollover.}\label{tab:rollver}
-   \renewcommand\arraystretch{1.3}{\multirowsetup}{\centering}
+   \renewcommand\arraystretch{1}{\multirowsetup}{\centering}
         \begin{tabular}{cccccccccccccccc}
         \toprule
          \textbf{User}    & 1& 2  & 3& 4& 5& 6& 7& 8& 9& 10& 11& 12& 13& 14& 15\\
@@ -126,10 +126,10 @@ To assess the detection accuracy of micro body movement, we manually label the g
  \subsubsection{Performance of acoustic events detection}
 To study the detection accuracies of different acoustic events, we compare the ground truth recorded by the camera with the detected results by our system. Table \ref{tab:sound} shows the results across 15 participants. We can see that the precision for cough event is 88.9\% and a little than other three events. The reason is that different user's cough patterns are different, the pre-defined parameters in the detection model does not include all possible patterns. In fact, we train the parameters with only 120 sets of nighttime sound data. Those data come from 40 (21 males and 19 females) volunteers of different ages (from 15 to 60 years old) who are prone to snoring, coughing, or somniloquy at night. To further improve the detection accuracy, we can train particular parameters for different users.
 
-\begin{table}[!thbp]
- \tabcolsep1pt
+\begin{table}[!thbp]\footnotesize
+% \tabcolsep1pt
   \centering  % 表居中
-  \renewcommand\arraystretch{0.3}
+ \renewcommand\arraystretch{0.3}
   \caption{The confusion matrix of acoustic events detection.}\label{tab:sound}
 \begin{tabular}{c| c | c | c | c | c | c}
    \hline
@@ -182,8 +182,8 @@ To study the detection accuracies of different acoustic events, we compare the g
 
 In order to prove that the detected events not only reflect the user's sleep habits, but also effectively identify the sleep stages to assess the sleep quality, we regard the reported results from Fitbit Charge2 as the ground truth.  There are 50 sets of nocturnal sleep data selected from 210 sets of sleep data. To make the selection fairly, we randomly pick at least 3 sets of data for each participant. For  reflecting the sleep stage change carefully, {\systemname} evaluates the sleep stage every 15 minutes even when there are no events detected. The averaged precision value and recall value are shown in Table \ref{tab:sleep stage}. It indicates that though {\systemname} may make misjudgement between the light sleep and REM, the overall performance is satisfying.
 
-\begin{table}[!thbp]
-	\tabcolsep1pt
+\begin{table}[!thbp]\footnotesize
+%	\tabcolsep1pt
 	\centering  % 表居中
 	\renewcommand\arraystretch{0.4}
 	\caption{{The confusion matrix of sleep stage detection.}}\label{tab:sleep stage}
@@ -204,12 +204,11 @@ In order to prove that the detected events not only reflect the user's sleep hab
 		&  \multicolumn{1}{c|}{{ REM}}
 		&  \multicolumn{1}{c|}{{ Light Sleep}}
 		&  \multicolumn{1}{c|}{{ Deep Sleep}} \\
-		& & & & & \\
+	%	& & & & & \\
 		\cline{1-6}
 		& & & & & \\
-		\multirow{4}{*}{\begin{sideways}{{ Groundtruth}}\end{sideways}}
+		\multirow{1}{*}{\begin{sideways}{{ Groundtruth}}\end{sideways}}
 		&   { REM}   & {\bf{{476}}}    &   $143$      &   $61$     &   {70.0\%}\\
-		& & & & & \\
 		& & & & & \\
 		\cline{2-6}
 		& & & & & \\
@@ -230,7 +229,7 @@ In order to prove that the detected events not only reflect the user's sleep hab
 \subsubsection{Effect of respiratory amplitude on sleep stage detection}
 When we detect different sleep stages, we also consider the respiratory amplitude when the hand's position is in the abdomen or chest. To assess the effectiveness of respiration amplitude estimation, we evaluate the performance of the sleep stage detection in two cases, that are with and without taking the respiration amplitude into account. The performance of sleep stage detection are shown  in Table \ref{tab:respiratory}. For three different sleep stages, both the precision and recall values are improved with the help of respiration amplitude estimation.
 
-\begin{table} \footnotesize
+\begin{table}[!thbp]\footnotesize
 	\centering  % 表居中
 	\renewcommand\arraystretch{0.3}
 	\caption{Effect of respiration amplitude estimation.}\label{tab:respiratory}
@@ -242,30 +241,30 @@ When we detect different sleep stages, we also consider the respiratory amplitud
 		& \multicolumn{2}{ c|}{ }\\
 		%  \multirow{4}*{}
 		&\multicolumn{1}{c|}{}
-		&\multicolumn{2}{c|}{\textbf{\scriptsize REM}}
-		&\multicolumn{2}{c|}{\textbf{\scriptsize Light Sleep}}
-		&\multicolumn{2}{c|}{\textbf{\scriptsize Deep Sleep}} \\
+		&\multicolumn{2}{c|}{\textbf{\footnotesize REM}}
+		&\multicolumn{2}{c|}{\textbf{\footnotesize Light Sleep}}
+		&\multicolumn{2}{c|}{\textbf{\footnotesize Deep Sleep}} \\
 		%&\multicolumn{5}{ c |}{\textbf{\small Prediction}} \\
 		% & \multicolumn{5}{ c |}{ } \\
 		\cline{2-8}
 		& & & & & & &\\
 		\multicolumn{1}{c|}{\textbf{}}
 		&  \multicolumn{1}{c|}{\textbf{Features}}
-		&  \multicolumn{1}{c|}{\scriptsize Precision}
-		&  \multicolumn{1}{c|}{\scriptsize Recall}
-		&  \multicolumn{1}{c|}{\scriptsize Precision}
-		&  \multicolumn{1}{c|}{\scriptsize Recall}
-		&  \multicolumn{1}{c|}{\scriptsize Precision}
-		&  \multicolumn{1}{c|}{\scriptsize Recall}\\
+		&  \multicolumn{1}{c|}{\footnotesize Precision}
+		&  \multicolumn{1}{c|}{\footnotesize Recall}
+		&  \multicolumn{1}{c|}{\footnotesize Precision}
+		&  \multicolumn{1}{c|}{\footnotesize Recall}
+		&  \multicolumn{1}{c|}{\footnotesize Precision}
+		&  \multicolumn{1}{c|}{\footnotesize Recall}\\
 		& & & & & & &\\
 		\cline{2-8}
 		& & & & & & &\\
 		\multirow{5}{*}
-		&   \textbf{\scriptsize Without Respiration Amplitude}   & $62.9\%$    &   $63.4\%$      &   $59.4\%$      &   $63.9\%$    &   $57.7\%$ &  $54.1\%$ \\
+		&   \textbf{\footnotesize Without Respiration Amplitude}   & $62.9\%$    &   $63.4\%$      &   $59.4\%$      &   $63.9\%$    &   $57.7\%$ &  $54.1\%$ \\
 		& & & & & & &\\
 		\cline{2-8}
 		& & & & & & &\\
-		&   \textbf{\scriptsize With Respiration Amplitude}   &   $71.0\%$      &   $70.0\%$     &   $66.5\%$      &   $69.7\%$   &   $63.3\%$ &   $59.8\%$ \\
+		&   \textbf{\footnotesize With Respiration Amplitude}   &   $71.0\%$      &   $70.0\%$     &   $66.5\%$      &   $69.7\%$   &   $63.3\%$ &   $59.8\%$ \\
 		& & & & & & &\\
 		
 		\cline{2-8}
@@ -274,16 +273,13 @@ When we detect different sleep stages, we also consider the respiratory amplitud
 \end{table}
 
 \subsubsection{Performance comparison}
-To our knowledge, in the current actigraphy-based work, there is no clear baseline for sleep stage detection performance for us. So we
-decided to compare {\systemname} with the sleep detection app, Sleep As Android, that has been widely used in the marketplace, in addition,
-we also considered a comparison with Sleep Hunter \cite{gu2016sleep}. Table \ref{tab:comparison} shows the performance of the sleep stage
-detection, Sleep As Android can only detect light sleep stage and the deep sleep stage, so we only compared the performance of these two
-stages.
+We compare {\systemname} with two state-of-the-art work, the sleep detection app Sleep As Android and smartphone-based system Sleep Hunter \cite{gu2016sleep}.  Considering that Sleep As Android can only detect light sleep stage and deep sleep stage, we only compare the performance of these two stages. Table \ref{tab:comparison} shows the detection results.
+As we can see, {\systemname}  performs much better than Sleep As Android and slightly better than Sleep Hunter. This good performance comes from the incorporation of rich and complicated sleep events. Therefore, our system helps the users understand their sleep more easily and improve  sleep quality more effectively.
 
-  \begin{table} \footnotesize
+  \begin{table}[!thbp]\footnotesize
  	\centering  % 表居中
  	\renewcommand\arraystretch{0.3}
- 	\caption{\textcolor{blue}{Performance Comparison}}\label{tab:comparison}
+ 	\caption{Performance of sleep stage detection comparison.}\label{tab:comparison}
  	\begin{tabular}{c| c | c | c | c | c |}
  		\cline{2-6}
  		&\multicolumn{1}{ c|}{ }
@@ -291,28 +287,30 @@ stages.
  		&\multicolumn{2}{ c|}{ }\\
  		%  \multirow{4}*{}
  		&\multicolumn{1}{c|}{}
- 		&\multicolumn{2}{c|}{\textbf{\scriptsize Light Sleep}}
- 		&\multicolumn{2}{c|}{\textbf{\scriptsize Deep Sleep}} \\
+ 		&\multicolumn{2}{c|}{\textbf{\footnotesize Light Sleep}}
+ 		&\multicolumn{2}{c|}{\textbf{\footnotesize Deep Sleep}} \\
  		%&\multicolumn{5}{ c |}{\textbf{\small Prediction}} \\
  		% & \multicolumn{5}{ c |}{ } \\
  		\cline{2-6}
  		\multicolumn{1}{c|}{\textbf{}}
  		&  \multicolumn{1}{c|}{\diagbox{System}{Stage}}
- 		&  \multicolumn{1}{c|}{\scriptsize Precision}
- 		&  \multicolumn{1}{c|}{\scriptsize Recall}
- 		&  \multicolumn{1}{c|}{\scriptsize Precision}
- 		&  \multicolumn{1}{c|}{\scriptsize Recall}\\
+ 		&  \multicolumn{1}{c|}{\footnotesize Precision}
+ 		&  \multicolumn{1}{c|}{\footnotesize Recall}
+ 		&  \multicolumn{1}{c|}{\footnotesize Precision}
+ 		&  \multicolumn{1}{c|}{\footnotesize Recall}\\
  		\cline{2-6}
  		& & & & & \\
- 		\multirow{5}{*}
- 		&   \textbf{\scriptsize SleepGuard}   & $66.5\%$    &   $69.6\%$      &   $63.3\%$      &   $59.8$  \\
+ 	%	\multirow{3}{*}
+ 		&   \textbf{\footnotesize SleepGuard}   & $66.5\%$    &   $69.6\%$      &   $63.3\%$      &   $59.8\%$  \\
  		& & & & &  \\
  		\cline{2-6}
  		& & & & & \\
- 		&   \textbf{\scriptsize Sleep As Android}   &   $27.8\%$      &   $35.4\%$     &   $35.7\%$      &   $50.2\%$   \\
+ 		&   \textbf{\footnotesize Sleep As Android}   &   $27.8\%$      &   $35.4\%$     &   $35.7\%$      &   $50.2\%$   \\
+ 		& & & & &  \\
  		\cline{2-6}
  		& & & & & \\   
- 		&   \textbf{\scriptsize Sleep Hunter}   &   $66.74\%$      &   $66.11\%$     &   $60.00\%$      &   $50.73\%$   \\
+ 		&   \textbf{\footnotesize Sleep Hunter}   &   $66.74\%$      &   $66.11\%$     &   $60.00\%$      &   $50.73\%$   \\
+ 		& & & & &  \\
  		
  		\cline{2-6}
  		
@@ -320,29 +318,29 @@ stages.
  \end{table}
 
 
-As we can see, {\systemname} can not only perform better on sleep stage detection than Sleep As Android, but also detect one more sleep stage. \textcolor{blue}{As for Sleep Hunter, our system's detection ability is slightly better than its. This may be because {\systemname} detects sleep-related events with better performance and incorporates respiratory amplitude considerations. And our system can provide richer sleep data for users and take more factors that affect sleep quality into consideration, making users understand their sleep more easily and improve their sleep quality more effectively.} Further, we show our superior in function comapared with other similar sleep detection products, including Sleep As Android, Sleep Hunter, sleepMonitor \cite{sleepmonitor}, Sleeptracker \cite{sleeptracker}, Fitbit, isleep \cite{hao2013isleep}, Jawbone \cite{Jawbone},ubiSleep \cite{pombo2016ubisleep}, in Table \ref{tab:function}. As we have shown, {\systemname} can detect a wider range of sleep events to provide a better user experience.
+Further, we compare {\systemname}'s functions with 8 other sleep detection products  in Table \ref{tab:function}, including Sleep As Android, Sleep Hunter, sleepMonitor \cite{sleepmonitor}, Sleeptracker \cite{sleeptracker}, Fitbit, isleep \cite{hao2013isleep}, Jawbone \cite{Jawbone} and ubiSleep \cite{pombo2016ubisleep}.  {\systemname} detects a wider range of sleep events and thus provides a better user experience.
 
-\begin{table*}\scriptsize
-\setlength{\abovecaptionskip}{0.8pt}
+\begin{table*}[!thbp]\footnotesize
+%\setlength{\abovecaptionskip}{0.8pt}
   \centering  % 表居中
-  \tabcolsep10pt
-  \arrayrulewidth1pt
-  \caption{Systems for support sleep}\label{tab:function}
+  \tabcolsep7pt
+  %\arrayrulewidth1pt
+  \caption{Functions comparision between different systems.}\label{tab:function}
   \renewcommand{\multirowsetup}{\centering}
   \noindent\makebox[\textwidth]{%
         \begin{tabularx}{1.0\textwidth}{|c|c|c|c|c|c|c|}
         \cline{1-7}
-        \multicolumn{1}{|c|}{\multirow{2}*{\textbf{\scriptsize System}}}
-        &\multicolumn{6}{c|}{\textbf{ \scriptsize Detected Events}} \\
+        \multicolumn{1}{|c|}{\multirow{2}*{\textbf{\footnotesize System}}}
+        &\multicolumn{6}{c|}{\textbf{ \footnotesize Detected Events}} \\
          \cline{2-7}
-    &  \multicolumn{1}{c|}{\textbf{ \scriptsize Heart Rate }}
-    &  \multicolumn{1}{c|}{\textbf{ \scriptsize Acoustic Event }}
-    &  \multicolumn{1}{c|}{\textbf{ \scriptsize Sleep Posture }}
-     &  \multicolumn{1}{c|}{\textbf{ \scriptsize body Movement }}
-      &  \multicolumn{1}{c|}{\textbf{ \scriptsize hand position}}
-       &  \multicolumn{1}{c|}{\textbf{ \scriptsize Sleep Stage}} \\
+    &  \multicolumn{1}{c|}{\textbf{ \footnotesize Heart Rate }}
+    &  \multicolumn{1}{c|}{\textbf{ \footnotesize Acoustic Event }}
+    &  \multicolumn{1}{c|}{\textbf{ \footnotesize Sleep Posture }}
+     &  \multicolumn{1}{c|}{\textbf{ \footnotesize Body Movement }}
+      &  \multicolumn{1}{c|}{\textbf{ \footnotesize Hand Position}}
+       &  \multicolumn{1}{c|}{\textbf{ \footnotesize Sleep Stage}} \\
         \cline{1-7}
-        \multirow{7}{2cm}
+        \multirow{7}{2.14cm}
         {\textbf{SleepGuard\\Sleep as Android\\Sleep Hunter\\SleepMonitor\\Sleeptracker\\isleep \\Fitbit\\Jawbone\\ ubiSleep } }
         & &$\checkmark$ & $\checkmark$ &  $\checkmark$  &$\checkmark$ &$\checkmark$\\
         & &$\checkmark$ & & & &$\checkmark$\\
@@ -358,21 +356,24 @@ As we can see, {\systemname} can not only perform better on sleep stage detectio
 \end{table*}
 
 \subsubsection{User survey}
-In order to evaluate whether {\systemname} can provide help in the assessment of sleep quality and has a good user experience, we conducted a user survey of 15 volunteers participating in our experiments. In our survey, we asked participants to fill out our questionnaire based on PSQI \cite{carpenter1998psychometric} every morning during the experiment, in order to get their subjective feeling of sleep quality and use experience for our system. We use the following questions in our survey, which includes:
+We conducted a user survey of 15 volunteers participating in our experiments to evaluate the user experience. In order to get their subjective feeling of sleep quality and use experience for our system, we asked participants to fill out our questionnaire based on PSQI \cite{carpenter1998psychometric} every morning during the experiments. The questions in our survey include:
 \begin{enumerate}
-  \item Subjective sleep quality (5 levels, 1 for excellent and 5 for worst)
-  \item Sleep duration
-  \item Sleep disturbances
-  \item Daytime dysfunction
+  \item Subjective sleep quality (5 levels, 1 for excellent and 5 for worst),
+  \item Sleep duration,
+  \item Sleep disturbances,
+  \item Daytime dysfunction.
 \end{enumerate}
+For the above four items, each one is rated on a 1 to 5 scale. These scores are first summed to yield a total score, which ranges from 0 to 20. Then we merge every five neighboring scores into one scale and eventually divide the total scores into four levels, recorded as 0, 1, 2 and 3, representing poor, general, good and excellent, respectively. The final sleep quality score comes from the comprehensive scores of above four questionnaires. 
 
-\textcolor{blue}{The average 14-day sleep quality score for 15 individuals are shown in Table. \ref{tab:quality}, we have listed three kinds of sleep quality assessment mechanims, namely, {\systemname}, Fitbit and user survey, where the sleep quality score obtained by user survey comes from the comprehensive scores of the questionnaires based on the above aspects. For the above four items, each one is rated on a 1-5 scale. These component scores are then summed to yield a score, which has a range of 0-20. And we divide each five scores into one and eventually divide the total score into four levels, recorded as 0-3, representing poor, general, good and excellent respectively, that is higher scores indicate better sleep quality. From the table, we can see the result is satisfactory and representative to some extent.} In addition, we also ask whether users are interested in these events, such as sleep posture, hand position, which detected by {\systemname}. 80\% of participants believe that the detection of sleep posture is very necessary, showing their sleep posture can not only help people to avoid health problems caused by long-term improper sleeping posture, but also help us find out the reasons for the next day's physical discomfort, such as dizziness, muscle soreness may be due to improper sleeping position. 60\% of the participants thought it useful to detect their hand position in the supine position and even one user mentioned that he did often have nightmares and that he found his hands were often placed on his chest. And {\systemname} was able to remind him to avoid such a hand position when sleeping. However, only 20\% of them think it is necessary to calculate the number of body rollover, but the detection of body rollover is very useful in the division of sleep stage.
+The 14-days sleep quality scores from 15 participates are presented in Table. \ref{tab:quality}. We also list the sleep quality assessments by our system and Fitbit.  We can see the result is satisfactory and representative to some extent.
+	
+In addition, we also ask whether users are interested in these events, such as sleep posture, hand position, which detected by {\systemname}. 80\% of participants believe that the detection of sleep posture is very necessary, showing their sleep posture can not only help people to avoid health problems caused by long-term improper sleeping posture, but also help us find out the reasons for the next day's physical discomfort, such as dizziness, muscle soreness may be due to improper sleeping position. 60\% of the participants thought it useful to detect their hand position in the supine position and even one user mentioned that he did often have nightmares and that he found his hands were often placed on his chest. And {\systemname} was able to remind him to avoid such a hand position when sleeping. However, only 20\% of them think it is necessary to calculate the number of body rollover, but the detection of body rollover is very useful in the division of sleep stage.
 
 
 \begin{table} \footnotesize
   \centering  % 表居中
-  \renewcommand\arraystretch{0.3}
-  \caption{\textcolor{blue}{Results of sleep quality assessment}}\label{tab:quality}
+  \renewcommand\arraystretch{0.5}
+  \caption{\textcolor{blue}{Results of sleep quality assessment.}}\label{tab:quality}
 \begin{tabular}{c| c | c | c | c | c |c |c |c |c |c| c |c |c |c |c |c |c|}
    %\cline{2-6}
    %&\multicolumn{1}{ c|}{ }
@@ -386,34 +387,35 @@ In order to evaluate whether {\systemname} can provide help in the assessment of
     \cline{2-17}
     \multicolumn{1}{c|}{\textbf{}}
     &  \multicolumn{1}{c|}{\diagbox{System}{User ID}}
-    &  \multicolumn{1}{c|}{\scriptsize  1}
-    &  \multicolumn{1}{c|}{\scriptsize  2}
-    &  \multicolumn{1}{c|}{\scriptsize  3}
-    &  \multicolumn{1}{c|}{\scriptsize  4}
-    &  \multicolumn{1}{c|}{\scriptsize  5}
-    &  \multicolumn{1}{c|}{\scriptsize  6}
-    &  \multicolumn{1}{c|}{\scriptsize  7}
-    &  \multicolumn{1}{c|}{\scriptsize  8}
-    &  \multicolumn{1}{c|}{\scriptsize  9}
-    &  \multicolumn{1}{c|}{\scriptsize  10}
-    &  \multicolumn{1}{c|}{\scriptsize  11}
-    &  \multicolumn{1}{c|}{\scriptsize  12}
-    &  \multicolumn{1}{c|}{\scriptsize  13}
-    &  \multicolumn{1}{c|}{\scriptsize  14}
-    &  \multicolumn{1}{c|}{\scriptsize  15}\\
+    &  \multicolumn{1}{c|}{\footnotesize  1}
+    &  \multicolumn{1}{c|}{\footnotesize  2}
+    &  \multicolumn{1}{c|}{\footnotesize  3}
+    &  \multicolumn{1}{c|}{\footnotesize  4}
+    &  \multicolumn{1}{c|}{\footnotesize  5}
+    &  \multicolumn{1}{c|}{\footnotesize  6}
+    &  \multicolumn{1}{c|}{\footnotesize  7}
+    &  \multicolumn{1}{c|}{\footnotesize  8}
+    &  \multicolumn{1}{c|}{\footnotesize  9}
+    &  \multicolumn{1}{c|}{\footnotesize  10}
+    &  \multicolumn{1}{c|}{\footnotesize  11}
+    &  \multicolumn{1}{c|}{\footnotesize  12}
+    &  \multicolumn{1}{c|}{\footnotesize  13}
+    &  \multicolumn{1}{c|}{\footnotesize  14}
+    &  \multicolumn{1}{c|}{\footnotesize  15}\\
      \cline{2-17}
     & & & & & & & & & & & & & & & & \\
     \multirow{16}{*}
-    &   \textbf{\scriptsize SleepGuard}  & $3$ & $3$ & $0$ & $2$ & $2$ & $1$ & $3$ & $0$ & $2$ & $2$ & $2$ & $2$ & $1$ & $0$ & $2$ \\
+    &   \textbf{\footnotesize SleepGuard}  & $3$ & $3$ & $0$ & $2$ & $2$ & $1$ & $3$ & $0$ & $2$ & $2$ & $2$ & $2$ & $1$ & $0$ & $2$ \\
    & & & & & & & & & & & & & & & &\\
     \cline{2-17}
    & & & & & & & & & & & & & & & &\\
-   &   \textbf{\scriptsize Fitbit}   & $3$ & $3$ & $0$ & $3$ & $1$ & $0$ & $2$ & $3$ & $2$ & $2$ & $2$ & $2$ & $2$ & $1$ & $2$\\
+   &   \textbf{\footnotesize Fitbit}   & $3$ & $3$ & $0$ & $3$ & $1$ & $0$ & $2$ & $3$ & $2$ & $2$ & $2$ & $2$ & $2$ & $1$ & $2$\\
+      & & & & & & & & & & & & & & & & \\
+      \cline{2-17}
+       & & & & & & & & & & & & & & & & \\
+    &   \textbf{\footnotesize User survey}  & $3$ & $2$ & $0$ & $2$ & $2$ & $0$ & $3$ & $1$ & $1$ & $2$ & $2$ & $3$ & $0$ & $0$ & $2$ &  \\
+     & & & & & & & & & & & & & & & & \\
     \cline{2-17}
-    & & & & & & & & & & & & & & & & \\
-    &   \textbf{\scriptsize User survey}  & $3$ & $2$ & $0$ & $2$ & $2$ & $0$ & $3$ & $1$ & $1$ & $2$ & $2$ & $3$ & $0$ & $0$ & $2$ &  \\
-   \cline{2-17}
-
    \end{tabular}
 \end{table}
 

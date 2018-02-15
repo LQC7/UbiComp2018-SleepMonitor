@@ -1,76 +1,78 @@
 \section{EXPERIMENTAL RESULTS}\label{sec:4experiment}
-In this section, we discuss the experiment methodology and detail the evaluation results.
+In this section, we detail the evaluation results for our system.
 
 \subsection{Evaluation Results}
 We focus on the detection accuracy about five events, that are body posture, the body rollover, the hand position, the micro body movement and the acoustic events.
 %, the classification of micro body movement
 
 \subsubsection{Performance of body posture classification}
-\textcolor{blue} {To test the detection accuracy of different body postures, we first train the classifier with only one participant's data, and this classifier is used for other fourteen persons. We found that training data using only one person's sleeping position has achieved good accuracy, so we currently use only one person’s data to train the classifier. In future  work, we can also use multiple people’s data to expand the sample library. Each user's data are selected to be training data sets once and only once, and each time the test data sets consist of data from the remaining 14 users, so we conducted a total of 14 tests using different training data for each user. Fig. \ref{fig:posture_zhu} plots average performance of 14 tests for different users.} We observe that the posture detection accuracy is consistently high across all users, and it does not show major variations across users. One of the reasons that we know the detection performance of sleeping posture is so good is that the position of the arm in different sleeping positions is specific, which is very helpful for our classification. And we try to consider more arm positions as much as possible.
+We test the overall classification performance of different body postures. The groundtruth of body postures are recorded by the cameras. To simplify the experiment, we train the classifier using the data of only one user and then test the rest fourteen users, the accuracy is pretty good. Based on this, we use each user's data to train the classifier in turn. The averaged accuracy for 15 cases are the final performance, as shown in Fig. \ref{fig:posture_zhu}. We observe that the posture detection accuracy is consistently high across all users, and it does not show major variations across users. This good performance benifits from the distinct characteristics of arm position under different sleeping postures.
 
-\begin{figure}[!thbp]
+\begin{figure}[!t]
  \centering
  \includegraphics[width=0.85\linewidth]{Figures/posture_zhu.pdf}
  \caption{Detection accuracy of body postures.}\label{fig:posture_zhu}
  \end{figure}
 
-Then to test the overall sleep posture detection performance, we calculate the detection precision and recall across all postures. The result is shown in Table \ref{tab:posture}. The values in blocks are the corresponding numbers of the four types of sleep postures in our testing data. We may find that a small amount of the supine posture are classified as left-sided, possibly due to the fact that the angle features of acceleration when the person is in the supine position with the hand put on the head is closer to the angle features of acceleration when the person is in the left side. And as we can see, the total amount of the prone posture is less than the number of other postures. It suggests that most people are not accustomed to sleep in the prone posture, because it is neither healthy nor comfortable. All in all, Table \ref{tab:posture} shows the outstanding detection performance.
-
 \begin{table}[!thbp]
- \tabcolsep1pt
-  \centering  % 表居中
-  %\renewcommand\arraystretch{0.277}
-  %\caption{The confusion matrix of body posture classification.}\label{tab:posture}
-  %\noindent\makebox{%
-%\begin{tabular}{1\textwidth}{ c | c | c | c | c | c | c}
-  \renewcommand\arraystretch{0.3}
-  \caption{The confusion matrix of body posture classification.}\label{tab:posture}
-\begin{tabular}{c| c | c | c | c | c | c}
-   \cline{1-7}
-   &\multicolumn{1}{ c|}{ }
-   & \multicolumn{4}{ c|}{ }\\
-   \multirow{2}*{}
-&\multicolumn{1}{c|}{\multirow{2}*{{Result}}}
-&\multicolumn{4}{c|}{{Prediction}}
-& \multirow{4}*{{Recall}} \\
-    %&\multicolumn{5}{ c |}{\textbf{\small Prediction}} \\
-   % & \multicolumn{5}{ c |}{ } \\
-    \cline{3-6}
-    & & & & & \\
-    \multicolumn{1}{c|}{{}}
-    &  \multicolumn{1}{c|}{{}}
-    &  \multicolumn{1}{c|}{{Supine}}
-    &  \multicolumn{1}{c|}{{Left Lateral}}
-    &  \multicolumn{1}{c|}{{Right Lateral}}
-    &  \multicolumn{1}{c|}{{Prone}}   \\
-    & & & & & \\
-     \cline{1-7}
-    & & & & & \\
-    \multirow{5}{*}{\begin{sideways}{{Groundtruth}}\end{sideways}}
-    &   {Supine}   & {\bf{{1182}}}    &   $25$      &   $4$      &   $9$    &   {96.7\%}\\
-    & & & & & \\
-    \cline{2-7}
-    & & & & & \\
-   &   {Left Lateral}   &   $6$      &   {\bf{{1292}}}     &   $0$      &   $0$   &   {99.5\%} \\
-    & & & & & \\
-     \cline{2-7}
-    & & & & & \\
-    &   {Right Lateral}   &   $7$      &   $0$      &  {\bf{{1275}}}      &   $12$  &   {98.5\%}  \\
-    & & & & & \\
-     \cline{2-7}
-    & & & & & \\
-    &   {Prone}   &   $19$      &   $2$      &   $3$      &   {\bf{{567}}}   &   {95.9\%} \\
-    & & & & & \\
-    \cline{1-7}
-    & & & & & \\
-    &   {Precision}    &   {97.3 \%}   &   {98.0\%}   &   {99.5\%}   &   {96.4\%}    \\
-    & & & & & \\
-    \cline{1-7}
-   \end{tabular}
+	\tabcolsep1pt
+	\centering  % 表居中
+	%\renewcommand\arraystretch{0.277}
+	%\caption{The confusion matrix of body posture classification.}\label{tab:posture}
+	%\noindent\makebox{%
+	%\begin{tabular}{1\textwidth}{ c | c | c | c | c | c | c}
+	\renewcommand\arraystretch{0.3}
+	\caption{The confusion matrix of body posture classification.}\label{tab:posture}
+	\begin{tabular}{c| c | c | c | c | c | c}
+		\cline{1-7}
+		&\multicolumn{1}{ c|}{ }
+		& \multicolumn{4}{ c|}{ }\\
+		\multirow{2}*{}
+		&\multicolumn{1}{c|}{\multirow{2}*{{Result}}}
+		&\multicolumn{4}{c|}{{Prediction}}
+		& \multirow{4}*{{Recall}} \\
+		%&\multicolumn{5}{ c |}{\textbf{\small Prediction}} \\
+		% & \multicolumn{5}{ c |}{ } \\
+		\cline{3-6}
+		& & & & & \\
+		\multicolumn{1}{c|}{{}}
+		&  \multicolumn{1}{c|}{{}}
+		&  \multicolumn{1}{c|}{{Supine}}
+		&  \multicolumn{1}{c|}{{Left Lateral}}
+		&  \multicolumn{1}{c|}{{Right Lateral}}
+		&  \multicolumn{1}{c|}{{Prone}}   \\
+		& & & & & \\
+		\cline{1-7}
+		& & & & & \\
+		\multirow{5}{*}{\begin{sideways}{{Groundtruth}}\end{sideways}}
+		&   {Supine}   & {\bf{{1182}}}    &   $25$      &   $4$      &   $9$    &   {96.7\%}\\
+		& & & & & \\
+		\cline{2-7}
+		& & & & & \\
+		&   {Left Lateral}   &   $6$      &   {\bf{{1292}}}     &   $0$      &   $0$   &   {99.5\%} \\
+		& & & & & \\
+		\cline{2-7}
+		& & & & & \\
+		&   {Right Lateral}   &   $7$      &   $0$      &  {\bf{{1275}}}      &   $12$  &   {98.5\%}  \\
+		& & & & & \\
+		\cline{2-7}
+		& & & & & \\
+		&   {Prone}   &   $19$      &   $2$      &   $3$      &   {\bf{{567}}}   &   {95.9\%} \\
+		& & & & & \\
+		\cline{1-7}
+		& & & & & \\
+		&   {Precision}    &   {97.3 \%}   &   {98.0\%}   &   {99.5\%}   &   {96.4\%}    \\
+		& & & & & \\
+		\cline{1-7}
+	\end{tabular}
 \end{table}
 
+To have a deep evaluation about the sleep posture detection, we randomly choose one user to train the classifier. Then we calculate the detection precision and recall across postures. The result is shown in Table \ref{tab:posture}. The values in blocks are the corresponding numbers of four sleep postures from 14 test users. Due to that the angle features of acceleration are similar between the suspine posture with hand putting on the head and the left-lateral posture, a small amount of the supine postures are classified as left lateral.  The total amount of the prone posture is less than the number of other postures. It suggests that most people are not accustomed to sleep in the prone posture, because it is neither healthy nor comfortable. In coclude, Table \ref{tab:posture} shows the outstanding detection performance.
+
+
+
 \subsubsection{Performance of body rollover counting}
-To verify the efficiency of body rollover detection algorithm, we compare the number of body rollover detected by {\systemname} with the groundtruth number recorded by camera. The detection performance is showed in Table \ref{tab:rollver}. We can see from Table 2 that User 3 has an unusually high number of turns, probably trouble falling asleep caused by sleep disorder. For 15 users, the average detection accuracies are all very high, and the least one is still 87\%. Thus our system can accurately distinguish the large hand movement from the body rollover in bed. However, detecting errors in body rollover events will not have a significant impact on our end result, because the division of the sleep stage is a comprehensive consideration of all the features of the sleep stage, such as micro body movement and acoustic events.
+To verify the efficiency of body rollover detection algorithm, we compare each user's  body rollover number detected by {\systemname} with the groundtruth recorded by camera. The performance is showed in Table \ref{tab:rollver}. We can see that User 3, User 4 and User 13 has an unusually high number, this difficulty in fall asleep results from the sleep disorder. For 15 users, the detection accuracies are all very high, and the least one is still 87\%. Thus {\systemname} can accurately distinguish the large hand movement from the body rollover in bed. However, detecting errors in body rollover events will not have a significant impact on our end result, because the division of the sleep stage is a comprehensive consideration of all the features of the sleep stage, such as micro body movement and acoustic events.
 
 \begin{table}[!thbp]
   %\centering  % 表居中
@@ -82,7 +84,7 @@ To verify the efficiency of body rollover detection algorithm, we compare the nu
         \toprule
          \textbf{User}    & 1& 2  & 3& 4& 5& 6& 7& 8& 9& 10& 11& 12& 13& 14& 15\\
         \midrule
-         \rowcolor{Gray}      { Groundtruth}  &231&284&348&308&288&301&296&283&293&288&291&279&290&319&286 \\
+         \rowcolor{Gray}      { Groundtruth}  &231&204&442&397&198&101&196&164&193&208&131&205&342&149&156 \\
                  { Accuracy} &91\%& 94\% &88\%&93\%&96\%&94\%&87\%&90\% &93\% &94\% &92\% &94\% &89\% &90\% &95\%\\
         \bottomrule
  \end{tabular}

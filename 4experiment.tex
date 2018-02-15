@@ -5,8 +5,8 @@ In this section, we detail the evaluation results for our system.
 We focus on the detection accuracy about five events, that are body posture, the body rollover, the hand position, the micro body movement and the acoustic events.
 %, the classification of micro body movement
 
-\subsubsection{Performance of body posture classification}
-We test the overall classification performance of different body postures. The groundtruth of body postures are recorded by the cameras. To simplify the experiment, we train the classifier using the data of only one user and then test the rest fourteen users, the accuracy is pretty good. Based on this, we use each user's data to train the classifier in turn. The averaged accuracy for 15 cases are the final performance, as shown in Fig. \ref{fig:posture_zhu}. We observe that the posture detection accuracy is consistently high across all users, and it does not show major variations across users. This good performance benifits from the distinct characteristics of arm position under different sleeping postures.
+\subsubsection{Performance of body posture classification}\label{subsub:bodyposture}
+We test the overall classification performance of different body postures. The groundtruth of body postures are recorded by the cameras. We use a  cross-validation approach by training the classifier with the data of one user in turn and testing the rest fourteen users. The averaged accuracy for 15 cases are the final performance, as shown in Fig. \ref{fig:posture_zhu}. We observe that the posture detection accuracy is consistently high across all users, and it does not show major variations across users. This good performance benifits from the distinct characteristics of arm position under different sleeping postures.
 
 \begin{figure}[!t]
  \centering
@@ -72,7 +72,7 @@ To have a deep evaluation about the sleep posture detection, we randomly choose 
 
 
 \subsubsection{Performance of body rollover counting}
-To verify the efficiency of body rollover detection algorithm, we compare each user's  body rollover number detected by {\systemname} with the groundtruth recorded by camera. The performance is showed in Table \ref{tab:rollver}. We can see that User 3, User 4 and User 13 has an unusually high number, this difficulty in fall asleep results from the sleep disorder. For 15 users, the detection accuracies are all very high, and the least one is still 87\%. Thus {\systemname} can accurately distinguish the large hand movement from the body rollover in bed. However, detecting errors in body rollover events will not have a significant impact on our end result, because the division of the sleep stage is a comprehensive consideration of all the features of the sleep stage, such as micro body movement and acoustic events.
+To verify the efficiency of body rollover detection algorithm, we compare each user's  body rollover number detected by {\systemname} with the groundtruth recorded by camera. The performance is showed in Table \ref{tab:rollver}. We can see that User 3, User 4 and User 13 has an unusually high number. For User 3 and User 4, they have difficulty in falling asleep due to the sleep disorder.  User 13 needs to rollover frequently because of  his loundly snoring. For all the 15 users, the detection accuracies are all very high, and the least one is still 87\%. Thus {\systemname} can accurately distinguish the large hand movement from the body rollover in bed. What's more, detecting errors in body rollover events will not have a significant impact on our end result, because the division of  sleep stages is a comprehensive consideration of all the detected features in each stage, such as micro body movement and acoustic events.
 
 \begin{table}[!thbp]
   %\centering  % 表居中
@@ -91,7 +91,7 @@ To verify the efficiency of body rollover detection algorithm, we compare each u
 \end{table}
 
 \subsubsection{Performance of hand position recognition}
-\textcolor{blue}{To test the identification performance of different hand positions, {\systemname} uses a cross-validation approach that uses only one user's data at a time to train the classifier, and the remaining 14 users' data are treated as test data sets.} The classifier for detecting the hand movement trajectory is combined with the detection of periodic signals caused by respiration, then the hand position which is on the chest or abdomen or head can be identified. Fig. \ref{fig:hand_zhu} illustrates the accuracy of hand position across 15 people. As we can see that with just one set of training data, the accuracies for different users are all higher than 87\%. Therefore, our system can achieve a satisfied identification accuracy for different hand positions at a small price. Moreover, we found that at least four persons out of fifteen participants would tend to put their hands on their heads when they sleep in the supine, which is a bad habit for sleep. And other participants' hand are also often placed at these positions of our interest when they are in their supine posture.
+To test the recognition performance of different hand positions, {\systemname} uses the cross-validation approach presented in \ref{subsub:bodyposture} with only one user's data at a time to train the classifier and the remaining 14 users' data as the test sets. The classifier for detecting the hand movement trajectory is combined with the detection of periodic signals caused by respiration, then the hand position on the chest (or abdomen or head) can be identified. Fig. \ref{fig:hand_zhu} illustrates the accuracy of hand position across 15 users. As we can see that with just one set of training data, the accuracies for different users are all higher than 87\%. Therefore, our system can achieve a satisfied identification accuracy for different hand positions. Moreover, we find that at least four out of fifteen participants tends to put their hands on their heads when they sleep in the supine posture.  It is a bad habit and suggests the users to remove the 
 
 
 \begin{figure}
@@ -104,7 +104,7 @@ To verify the efficiency of body rollover detection algorithm, we compare each u
 
 
 \subsubsection{Performance of micro body movement detection}
-To assess the performance of {\systemname}'s detection and classification of user's micro body movements during sleep, we manually mark the types of the micro body movements (hand moving, arm raising, and body trembling) recorded by the camera that occur during sleep. At the same time, we use the accelerometer embedded in a smartphone placed on the bed to record the occurrence of the micro body movements, so as to avoid some movements such as trembling of the body being ignored due to being covered by coverings (such as quilts). And then we combine the two to serve as groundtruth. Fig. \ref{fig:micro_movement_zhu} illustrates the accuracy of the body micro-motion classification across 15 people. We observed that the micro-motion detection accuracy of all users is very close, that is, there will be no major changes between users. And from Fig. \ref{fig:micro_combine}, we can see that even though the worst classification result belongs to the hand movement, the average precision and recall rate still exceed 75\%, and the average accuracy of arm raising and body trembling are 93 \%, 84\%, which indicates that the accuracy of the classification is acceptable. And our purpose of detecting micro body movement is to help us detect the sleep stage, so we are more concerned with body trembling and arm raising, and the poor accuracy of hand moving does not have a significant impact on our end result. The reason for the poor performance of hand movement and body trembling classification may be that we have fewer people to refer to when setting the threshold of the peak value. Specifically, we can further consider more different people in different situations, or set their own thresholds for each person by observing or learning each person's sleep data.
+To assess the detection accuracy of micro body movement , we manually label the ground truth  recorded by the camera during sleep, indluding hand moving, arm raising, and body trembling. We also use the accelerometer embedded in the smartphone which placed on the bed to record the occurrence of the micro body movements, so as to avoid missing some movements such as trembling shaded by the coverings (such as quilts). Fig. \ref{fig:micro_movement_zhu} illustrates the detection accuracy across 15 users. It shows that the accuracies for all users are very close, that is, there will be no major changes between users. And from Fig. \ref{fig:micro_combine}, we can see that even though the worst classification result belongs to the hand movement, the average precision and recall rate still exceed 75\%, and the average accuracy of arm raising and body trembling are 93 \%, 84\%, which indicates that the accuracy of the classification is acceptable. And our purpose of detecting micro body movement is to help us detect the sleep stage, so we are more concerned with body trembling and arm raising, and the poor accuracy of hand moving does not have a significant impact on our end result. The reason for the poor performance of hand movement and body trembling classification may be that we have fewer people to refer to when setting the threshold of the peak value. Specifically, we can further consider more different people in different situations, or set their own thresholds for each person by observing or learning each person's sleep data.
 
 
 \begin{figure}
@@ -182,95 +182,96 @@ To study the detection accuracies of different acoustic events, we compare the g
 In order to prove that the detected events not only reflect the user's sleep habits, but also effectively divide the sleep stage in order to assess the quality of sleep, we regard the reported results from Fitbit Charge2 as the ground truth.  \textcolor{blue}{We randomly selected 50 sets of nocturnal sleep data from 210 sets of sleep data collected from 15 participants for 2 weeks as the test data, what's more, we need to make sure that no less than 3 sets of nocturnal sleep data in these test data come from the same participant. It is worth mentioning that, {\ systemname} bases on the event detected by each submodule every 5 minutes to determine the sleep stage.} The average values of precision and recall are shown in Table \ref{tab:sleep stage}. From this table, we can see that although {\systemname} may often make misjudgement between light sleep stage and REM, the overall detection performance of {\systemname} is satisfying.
 
 \begin{table}[!thbp]
- \tabcolsep1pt
-  \centering  % 表居中
-  \renewcommand\arraystretch{0.4}
-  \caption{\textcolor{blue}{Performance of sleep stage detection.}}\label{tab:sleep stage}
-\begin{tabular}{c| c | c | c | c | c}
-   \hline
-   &\multicolumn{1}{ c|}{ }
-   & \multicolumn{3}{ c|}{ }\\
-   \multirow{2}*{}
-&\multicolumn{1}{c|}{\multirow{2}*{{ Result}}}
-&\multicolumn{3}{c|}{{ Prediction}}
-& \multirow{3}*{{ Recall}} \\
-    %&\multicolumn{5}{ c |}{\textbf{\small Prediction}} \\
-   % & \multicolumn{5}{ c |}{ } \\
-    \cline{3-5}
-    & & & & & \\
-    \multicolumn{1}{c|}{{}}
-    &  \multicolumn{1}{c|}{{}}
-    &  \multicolumn{1}{c|}{{ REM}}
-    &  \multicolumn{1}{c|}{{ Light Sleep}}
-    &  \multicolumn{1}{c|}{{ Deep Sleep}} \\
-    & & & & & \\
-     \cline{1-6}
-    & & & & & \\
-    \multirow{4}{*}{\begin{sideways}{{ Groundtruth}}\end{sideways}}
-    &   { REM}   & {\bf{{986}}}    &   $337$      &   $84$     &   {70.0\%}\\
-    & & & & & \\
-     & & & & & \\
-    \cline{2-6}
-    & & & & & \\
-   &   { Light Sleep}   &   $319$      &   {\bf{{1007}}}     &   $120$      &   {69.6\%} \\
-    & & & & & \\
-     \cline{2-6}
-    & & & & & \\
-    &   { Deep Sleep}   &   $83$      &   $171$      &  {\bf{{378}}}      &   {59.8\%}  \\
-    & & & & & \\
-     \cline{1-6}
-     & & & & & \\
-    &   { Precision}      &   {71.0\%}   &   {66.5\%}   &   {64.9\%}   \\
-    & & & & & \\
-    \hline
-   \end{tabular}
+	\tabcolsep1pt
+	\centering  % 表居中
+	\renewcommand\arraystretch{0.4}
+	\caption{\textcolor{blue}{Performance of sleep stage detection.}}\label{tab:sleep stage}
+	\begin{tabular}{c| c | c | c | c | c}
+		\hline
+		&\multicolumn{1}{ c|}{ }
+		& \multicolumn{3}{ c|}{ }\\
+		\multirow{2}*{}
+		&\multicolumn{1}{c|}{\multirow{2}*{{ Result}}}
+		&\multicolumn{3}{c|}{{ Prediction}}
+		& \multirow{3}*{{ Recall}} \\
+		%&\multicolumn{5}{ c |}{\textbf{\small Prediction}} \\
+		% & \multicolumn{5}{ c |}{ } \\
+		\cline{3-5}
+		& & & & & \\
+		\multicolumn{1}{c|}{{}}
+		&  \multicolumn{1}{c|}{{}}
+		&  \multicolumn{1}{c|}{{ REM}}
+		&  \multicolumn{1}{c|}{{ Light Sleep}}
+		&  \multicolumn{1}{c|}{{ Deep Sleep}} \\
+		& & & & & \\
+		\cline{1-6}
+		& & & & & \\
+		\multirow{4}{*}{\begin{sideways}{{ Groundtruth}}\end{sideways}}
+		&   { REM}   & {\bf{{476}}}    &   $143$      &   $61$     &   {70.0\%}\\
+		& & & & & \\
+		& & & & & \\
+		\cline{2-6}
+		& & & & & \\
+		&   { Light Sleep}   &   $131$      &   {\bf{{508}}}     &   $91$      &   {69.6\%} \\
+		& & & & & \\
+		\cline{2-6}
+		& & & & & \\
+		&   { Deep Sleep}   &   $63$      &   $113$      &  {\bf{{262}}}      &   {59.8\%}  \\
+		& & & & & \\
+		\cline{1-6}
+		& & & & & \\
+		&   { Precision}      &   {71.0\%}   &   {66.5\%}   &   {63.3\%}   \\
+		& & & & & \\
+		\hline
+	\end{tabular}
 \end{table}
 
 \subsubsection{Evaluation on the effect of respiratory amplitude on sleep stage detection}
 When we detect the hand's position in the abdomen or chest, we use the magnitude of the acceleration to estimate the amplitude of the respiration. To assess the effectiveness of {\systemname}'s detection of respiration amplitude, we evaluated the performance of the sleep stage test separately in two cases that with considering respiration amplitude and without considering respiration amplitude. And then we can measure the contributions of it for classification of the sleep stage, as we can see in Table \ref{tab:respiratory}. Obviously, When we consider the division of the sleep stage, combining breathing amplitude as a feature with other features, we find that the precision and recall of each sleep stage improve, which proves the effectiveness of our detection of respiration amplitude.
 
 \begin{table} \footnotesize
-  \centering  % 表居中
-  \renewcommand\arraystretch{0.3}
-  \caption{\textcolor{blue}{Evaluation of respiration amplitude contribution}}\label{tab:respiratory}
-\begin{tabular}{c| c | c | c | c | c | c| c |}
-   \cline{2-8}
-   &\multicolumn{1}{ c|}{ }
-   &\multicolumn{2}{ c|}{ }
-   &\multicolumn{2}{ c|}{ }
-   & \multicolumn{2}{ c|}{ }\\
-   %  \multirow{4}*{}
-    &\multicolumn{1}{c|}{}
-   &\multicolumn{2}{c|}{\textbf{\scriptsize REM}}
-   &\multicolumn{2}{c|}{\textbf{\scriptsize Light Sleep}}
-   &\multicolumn{2}{c|}{\textbf{\scriptsize Deep Sleep}} \\
-    %&\multicolumn{5}{ c |}{\textbf{\small Prediction}} \\
-   % & \multicolumn{5}{ c |}{ } \\
-    \cline{2-8}
-    & & & & & & &\\
-    \multicolumn{1}{c|}{\textbf{}}
-    &  \multicolumn{1}{c|}{\textbf{Features}}
-    &  \multicolumn{1}{c|}{\scriptsize Precision}
-    &  \multicolumn{1}{c|}{\scriptsize Recall}
-    &  \multicolumn{1}{c|}{\scriptsize Precision}
-    &  \multicolumn{1}{c|}{\scriptsize Recall}
-    &  \multicolumn{1}{c|}{\scriptsize Precision}
-    &  \multicolumn{1}{c|}{\scriptsize Recall}\\
-    & & & & & & &\\
-     \cline{2-8}
-    & & & & & & &\\
-    \multirow{5}{*}
-    &   \textbf{\scriptsize Without Respiration Amplitude}   & $62.9\%$    &   $63.4\%$      &   $59.4\%$      &   $63.9\%$    &   $58.7\%$ &  $54.1\%$ \\
-    & & & & & & &\\
-    \cline{2-8}
-    & & & & & & &\\
-   &   \textbf{\scriptsize With Respiration Amplitude}   &   $71.0\%$      &   $70.0\%$     &   $66.5\%$      &   $69.7\%$   &   $64.9\%$ &   $59.8\%$ \\
-    & & & & & & &\\
-
-   \cline{2-8}
-
-   \end{tabular}
+	\centering  % 表居中
+	\renewcommand\arraystretch{0.3}
+	\caption{\textcolor{blue}{Evaluation of respiration amplitude contribution}}\label{tab:respiratory}
+	\begin{tabular}{c| c | c | c | c | c | c| c |}
+		\cline{2-8}
+		&\multicolumn{1}{ c|}{ }
+		&\multicolumn{2}{ c|}{ }
+		&\multicolumn{2}{ c|}{ }
+		& \multicolumn{2}{ c|}{ }\\
+		%  \multirow{4}*{}
+		&\multicolumn{1}{c|}{}
+		&\multicolumn{2}{c|}{\textbf{\scriptsize REM}}
+		&\multicolumn{2}{c|}{\textbf{\scriptsize Light Sleep}}
+		&\multicolumn{2}{c|}{\textbf{\scriptsize Deep Sleep}} \\
+		%&\multicolumn{5}{ c |}{\textbf{\small Prediction}} \\
+		% & \multicolumn{5}{ c |}{ } \\
+		\cline{2-8}
+		& & & & & & &\\
+		\multicolumn{1}{c|}{\textbf{}}
+		&  \multicolumn{1}{c|}{\textbf{Features}}
+		&  \multicolumn{1}{c|}{\scriptsize Precision}
+		&  \multicolumn{1}{c|}{\scriptsize Recall}
+		&  \multicolumn{1}{c|}{\scriptsize Precision}
+		&  \multicolumn{1}{c|}{\scriptsize Recall}
+		&  \multicolumn{1}{c|}{\scriptsize Precision}
+		&  \multicolumn{1}{c|}{\scriptsize Recall}\\
+		& & & & & & &\\
+		\cline{2-8}
+		& & & & & & &\\
+		\multirow{5}{*}
+		&   \textbf{\scriptsize Without Respiration Amplitude}   & $62.9\%$    &   $63.4\%$      &   $59.4\%$      &   $63.9\%$    &   $57.7\%$ &  $54.1\%$ \\
+		& & & & & & &\\
+		\cline{2-8}
+		& & & & & & &\\
+		&   \textbf{\scriptsize With Respiration Amplitude}   &   $71.0\%$      &   $70.0\%$     &   $66.5\%$      &   $69.7\%$   &   $63.3\%$ &   $59.8\%$ \\
+		& & & & & & &\\
+		
+		\cline{2-8}
+		
+	\end{tabular}
 \end{table}
+
 
 \subsubsection{Performance comparison}
 To our knowledge, in the current actigraphy-based work, there is no clear baseline for sleep stage detection performance for us. So we
@@ -280,43 +281,44 @@ detection, Sleep As Android can only detect light sleep stage and the deep sleep
 stages.
 
  \begin{table} \footnotesize
-  \centering  % 表居中
-  \renewcommand\arraystretch{0.3}
-  \caption{\textcolor{blue}{Performance Comparison}}\label{tab:comparison}
-\begin{tabular}{c| c | c | c | c | c |}
-   \cline{2-6}
-   &\multicolumn{1}{ c|}{ }
-   &\multicolumn{2}{ c|}{ }
-   &\multicolumn{2}{ c|}{ }\\
-   %  \multirow{4}*{}
-    &\multicolumn{1}{c|}{}
-   &\multicolumn{2}{c|}{\textbf{\scriptsize Light Sleep}}
-   &\multicolumn{2}{c|}{\textbf{\scriptsize Deep Sleep}} \\
-    %&\multicolumn{5}{ c |}{\textbf{\small Prediction}} \\
-   % & \multicolumn{5}{ c |}{ } \\
-    \cline{2-6}
-    \multicolumn{1}{c|}{\textbf{}}
-    &  \multicolumn{1}{c|}{\diagbox{System}{Stage}}
-    &  \multicolumn{1}{c|}{\scriptsize Precision}
-    &  \multicolumn{1}{c|}{\scriptsize Recall}
-    &  \multicolumn{1}{c|}{\scriptsize Precision}
-    &  \multicolumn{1}{c|}{\scriptsize Recall}\\
-     \cline{2-6}
-    & & & & & \\
-    \multirow{5}{*}
-    &   \textbf{\scriptsize SleepGuard}   & $66.5\%$    &   $69.6\%$      &   $64.9\%$      &   $59.8$  \\
-    & & & & &  \\
-    \cline{2-6}
-    & & & & & \\
-   &   \textbf{\scriptsize Sleep As Android}   &   $27.8\%$      &   $35.4\%$     &   $35.7\%$      &   $50.2\%$   \\
-    \cline{2-6}
-    & & & & & \\
-    &   \textbf{\scriptsize Sleep Hunter}   &   $66.74\%$      &   $66.11\%$     &   $60.00\%$      &   $50.73\%$   \\
-
-   \cline{2-6}
-
-   \end{tabular}
+	\centering  % 表居中
+	\renewcommand\arraystretch{0.3}
+	\caption{\textcolor{blue}{Performance Comparison}}\label{tab:comparison}
+	\begin{tabular}{c| c | c | c | c | c |}
+		\cline{2-6}
+		&\multicolumn{1}{ c|}{ }
+		&\multicolumn{2}{ c|}{ }
+		&\multicolumn{2}{ c|}{ }\\
+		%  \multirow{4}*{}
+		&\multicolumn{1}{c|}{}
+		&\multicolumn{2}{c|}{\textbf{\scriptsize Light Sleep}}
+		&\multicolumn{2}{c|}{\textbf{\scriptsize Deep Sleep}} \\
+		%&\multicolumn{5}{ c |}{\textbf{\small Prediction}} \\
+		% & \multicolumn{5}{ c |}{ } \\
+		\cline{2-6}
+		\multicolumn{1}{c|}{\textbf{}}
+		&  \multicolumn{1}{c|}{\diagbox{System}{Stage}}
+		&  \multicolumn{1}{c|}{\scriptsize Precision}
+		&  \multicolumn{1}{c|}{\scriptsize Recall}
+		&  \multicolumn{1}{c|}{\scriptsize Precision}
+		&  \multicolumn{1}{c|}{\scriptsize Recall}\\
+		\cline{2-6}
+		& & & & & \\
+		\multirow{5}{*}
+		&   \textbf{\scriptsize SleepGuard}   & $66.5\%$    &   $69.6\%$      &   $63.3\%$      &   $59.8$  \\
+		& & & & &  \\
+		\cline{2-6}
+		& & & & & \\
+		&   \textbf{\scriptsize Sleep As Android}   &   $27.8\%$      &   $35.4\%$     &   $35.7\%$      &   $50.2\%$   \\
+		\cline{2-6}
+		& & & & & \\   
+		&   \textbf{\scriptsize Sleep Hunter}   &   $66.74\%$      &   $66.11\%$     &   $60.00\%$      &   $50.73\%$   \\
+		
+		\cline{2-6}
+		
+	\end{tabular}
 \end{table}
+
 
 As we can see, {\systemname} can not only perform better on sleep stage detection than Sleep As Android, but also detect one more sleep stage. \textcolor{blue}{As for Sleep Hunter, our system's detection ability is slightly better than its. This may be because {\systemname} detects sleep-related events with better performance and incorporates respiratory amplitude considerations. And our system can provide richer sleep data for users and take more factors that affect sleep quality into consideration, making users understand their sleep more easily and improve their sleep quality more effectively.} Further, we show our superior in function comapared with other similar sleep detection products, including Sleep As Android, Sleep Hunter, sleepMonitor \cite{sleepmonitor}, Sleeptracker \cite{sleeptracker}, Fitbit, isleep \cite{hao2013isleep}, Jawbone \cite{Jawbone},ubiSleep \cite{pombo2016ubisleep}, in Table \ref{tab:function}. As we have shown, {\systemname} can detect a wider range of sleep events to provide a better user experience.
 

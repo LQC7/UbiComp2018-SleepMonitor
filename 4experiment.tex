@@ -8,11 +8,19 @@ We focus on the detection accuracy about five events, that are body posture, the
 \subsubsection{Performance of body posture classification}
 We test the overall classification performance of different body postures. The groundtruth of body postures are recorded by the cameras. To simplify the experiment, we train the classifier using the data of only one user and then test the rest fourteen users, the accuracy is pretty good. Based on this, we use each user's data to train the classifier in turn. The averaged accuracy for 15 cases are the final performance, as shown in Fig. \ref{fig:posture_zhu}. We observe that the posture detection accuracy is consistently high across all users, and it does not show major variations across users. This good performance benifits from the distinct characteristics of arm position under different sleeping postures.
 
-\begin{figure}[!t]
- \centering
- \includegraphics[width=0.85\linewidth]{Figures/posture_zhu.pdf}
- \caption{Detection accuracy of body postures.}\label{fig:posture_zhu}
- \end{figure}
+\begin{figure}
+	\centering
+	\begin{minipage}{.5\textwidth}
+	 \centering
+	\includegraphics[width=0.95\linewidth]{Figures/posture_zhu.pdf}
+	\caption{Detection accuracy of body postures.}\label{fig:posture_zhu}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+			\centering
+		\includegraphics[width=0.95\linewidth]{Figures/handposition_zhu.pdf}
+		\caption{Identification accuracy of hand positions}\label{fig:hand_zhu}
+	\end{minipage}
+\end{figure}
 
 \begin{table}[!thbp]
 	\tabcolsep1pt
@@ -94,11 +102,7 @@ To verify the efficiency of body rollover detection algorithm, we compare each u
 \textcolor{blue}{To test the identification performance of different hand positions, {\systemname} uses a cross-validation approach that uses only one user's data at a time to train the classifier, and the remaining 14 users' data are treated as test data sets.} The classifier for detecting the hand movement trajectory is combined with the detection of periodic signals caused by respiration, then the hand position which is on the chest or abdomen or head can be identified. Fig. \ref{fig:hand_zhu} illustrates the accuracy of hand position across 15 people. As we can see that with just one set of training data, the accuracies for different users are all higher than 87\%. Therefore, our system can achieve a satisfied identification accuracy for different hand positions at a small price. Moreover, we found that at least four persons out of fifteen participants would tend to put their hands on their heads when they sleep in the supine, which is a bad habit for sleep. And other participants' hand are also often placed at these positions of our interest when they are in their supine posture.
 
 
-\begin{figure}
- \centering
- \includegraphics[width=0.85\linewidth]{Figures/handposition_zhu.pdf}
- \caption{Identification accuracy of hand positions}\label{fig:hand_zhu}
-\end{figure}
+
 
 
 
@@ -108,17 +112,17 @@ To assess the performance of {\systemname}'s detection and classification of use
 
 
 \begin{figure}
-\setlength{\abovecaptionskip}{0.cm}
-\setlength{\belowcaptionskip}{-0.cm}
- \centering
- \includegraphics[width=0.85\linewidth]{Figures/micro_movement_zhu.pdf}
- \caption{Detection accuracy of micro body movement.}\label{fig:micro_movement_zhu}
-\end{figure}
-
-\begin{figure}
- \centering
-   \includegraphics[width=0.85\linewidth]{Figures/micro_combine1.pdf}
- \caption{Micro body movement}\label{fig:micro_combine}
+	\centering
+	\begin{minipage}{.5\textwidth}
+		 \includegraphics[width=0.95\linewidth]{Figures/micro_movement_zhu.pdf}
+		\caption{Detection accuracy of micro body movement.}\label{fig:micro_movement_zhu}
+		
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+	 \centering
+	\includegraphics[width=0.95\linewidth]{Figures/micro_combine1.pdf}
+	\caption{Micro body movement}\label{fig:micro_combine}
+	\end{minipage}
 \end{figure}
 
 

@@ -2,53 +2,69 @@
 
 \input{2overview.tex}
 
-\begin{figure}[!thbp]
-\centering
-%\setlength{\belowcaptionskip}{-9pt}
-      \includegraphics[width=0.5\linewidth]{Figures/BodyPosture.pdf}
-  \caption{Four sleep body postures.}\label{fig:BodyPosture}
-\end{figure}
 
-\begin{figure}[!t]
-  \centering
-  \subfigure[Supine]{
-    \label{fig:Supine}
-    \includegraphics[width=0.24\linewidth]{Figures/Supine.pdf}}
-  \hfill
-  \subfigure[Left Lateral]{
-    \label{fig:LeftLateral}
-    \includegraphics[width=0.24\linewidth]{Figures/LeftLateral.pdf}}
-   \subfigure[Right Lateral]{
-    \label{fig:RightLateral}
-    \includegraphics[width=0.24\linewidth]{Figures/RightLateral.pdf}}
-  %\hspace{1in}
-  \hfill
-  \subfigure[Prone]{
-    \label{fig:Prone}
-    \includegraphics[width=0.24\linewidth]{Figures/Prone.pdf}}
-  \caption{The tilt angle characteristics of four body postures.}
-  \label{fig:posture}
-\end{figure}
+
+\begin{figure*}
+	\centering
+	\begin{minipage}[t]{.33\textwidth}
+		\centering
+		  \includegraphics[width=0.85\linewidth]{Figures/BodyPosture.pdf}
+		\caption{Four sleep body postures.}
+		\label{fig:BodyPosture}
+	\end{minipage}%
+	\begin{minipage}[t]{.33\textwidth}
+		\centering
+		\includegraphics[width=0.85\linewidth]{Figures/HandPosition.pdf}
+		\caption{Three hand positions.}
+		\label{fig:HandPosition}		
+	\end{minipage}
+\begin{minipage}[t]{.33\textwidth}
+		\centering
+	\includegraphics[width=0.85\linewidth]{Figures/BodyRollover.pdf}
+	\caption{Body rollover from the left side to the right side.}
+	\label{fig:BodyRollover}
+\end{minipage}
+\end{figure*}
+
 
 \subsection{Sleep Posture and Movement}
-{\systemname} can monitor the user's sleep posture and habits, which is an indispensable factor of determining sleep quality and is heavily used in performing medical diagnoses \cite{oksenberg1998effect}. We present the detection details about the body posture and movement events. In {\systemname}, there are 4 different sleep postures, 3 different hand positions, 6 kinds of body rollover and 3 different micro body movements considered.  These events comprehensively and highly relates to the sleep stages and quality.
 
-\subsubsection{Body posture detection}
-According to research, dreaming and sleep quality are associated with underlying brain functions and may be affected by body posture \cite{posture2004}. And for different people, they should have his own fit sleeping posture, taking into account his own physical factors \cite{posture2016,posture2017}. For example, people with ailments such as heart disease or high blood pressure are unfit for prone position. People can consciously avoid or take some kind of sleep posture, which will have very good benefits for sleep quality and health \cite{posture2015}. So an effective posture detection and timely posture change can improve the sleep quality and avoid the harm for health. We concentrate on four common body postures, that are supine, left lateral, right lateral and prone. According to our survey, most people's arms have some usual and  fixed positions in these four different sleeping positions, namely the arm's position is related to the body posture, which is similar to the idea of the sleep posture detection in \cite{sleepmonitor}. In {\systemname}, we consider the following situations. when user sleep in supine, we consider that user's hand put on the left sides of the body, on the abdomen, on the chest or on the head; when user sleep on left, we consider that user's hand put close to the pillow; When user sleep on right, the hand on the chest, on the waist or close to the pillow are considered by our system; And the hand on the side of the head or above the head, we consider, when user sleep in the prone posture. In the future work, we will consider more of the arm's position. Fig. \ref{fig:BodyPosture} shows that one of a position of arm in four different sleep postures.
+Bodily movements during sleep are an important factor affecting sleep quality, as can be evidenced from their role in medical diagnoses of sleep~\cite{oksenberg1998effect}. {\systemname} uses motion sensors (accelerometer, gyroscope, and orientation sensor) to capture user's sleep posture and habits. In the following we detail the techniques we use for capturing the body posture and movements.  {\systemname}, currently supports 4 sleep postures (see Fig.~\ref{fig:BodyPosture}); 3 hand positions (see Fig.~\ref{fig:HandPosition}); 6 kinds of body rollovers (see Fig.~\ref{fig:BodyRollover} for an example); and 3 types of bodily micro movements. %These events comprehensively and highly relate to the sleep stages and quality.
+
+
+\subsubsection*{Posture Detection}
+
+Dreaming and sleep quality are associated with underlying brain functions, which in turn are affected by body posture~\cite{posture2004}. Sleep posture also varies across individuals and should fit personal and physical needs of the individual~\cite{posture2016,posture2017}. For example, sleeping in a prone position is unsuitable for people with ailments such as heart disease or high blood pressure. On the other hand, people can consciously avoid postures that would be beneficial for health and sleep quality~\cite{posture2015}. An effective way to detect the current posture and a timely mechanism for capturing changes in it can thus improve sleep quality and avoid the harm for health. We concentrate on four basic and most common body postures, which are supine, left lateral, right lateral, and prone; see Fig.~\ref{fig:BodyPosture}. According to a survey we conducted prior to developing \systemname, arms have common and reasonably stable positions when the user is sleeping in these positions, which allows us to estimate the user's current posture by monitoring his/her current hand position. The basic idea is similar to the idea of the sleep posture detection in \cite{sleepmonitor}. In {\systemname}, we consider the following situations. when user sleep in supine, we consider that user's hand put on the left sides of the body, on the abdomen, on the chest or on the head; when user sleep on left, we consider that user's hand put close to the pillow; When user sleep on right, the hand on the chest, on the waist or close to the pillow are considered by our system; And the hand on the side of the head or above the head, we consider, when user sleep in the prone posture. In the future work, we will consider more of the arm's position. Fig. \ref{fig:BodyPosture} shows that one of a position of arm in four different sleep postures.
+
+\begin{figure}
+	\centering
+	\subfigure[Supine]{
+		\label{fig:Supine}
+		\includegraphics[width=0.24\linewidth]{Figures/Supine.pdf}}
+	\hfill
+	\subfigure[Left Lateral]{
+		\label{fig:LeftLateral}
+		\includegraphics[width=0.24\linewidth]{Figures/LeftLateral.pdf}}
+	\subfigure[Right Lateral]{
+		\label{fig:RightLateral}
+		\includegraphics[width=0.24\linewidth]{Figures/RightLateral.pdf}}
+	%\hspace{1in}
+	\hfill
+	\subfigure[Prone]{
+		\label{fig:Prone}
+		\includegraphics[width=0.24\linewidth]{Figures/Prone.pdf}}
+	\caption{The tilt angle characteristics of four body postures.}
+	\label{fig:posture}
+\end{figure}
 
 We can choose the three-axis tilt angle calculated from the acceleration data as the feature \cite{sleepmonitor}. And then we use a supervised learning method to create a sleep posture profile. Specifically, we collect training data to create a mapping (i.e., angle mapping) between the angles and the arm under different positions. In order to extract the window-based tilt angle features, we average all the calculated angles in a window. Fig. \ref{fig:posture} shows the characteristics of four sleep postures with, it indicates that the tilt angles of three axes have obvious differences.The sleep postures thus can be inferred based on the positions of the smartwatch and the created angle mapping. However, we found that the supine features when the hand on the left sides of the body are similar with the prone features when the hand on the side of the head (Fig. \ref{fig:Supine} and \ref{fig:Prone}), thus the classification accuracy will be affected.
 
 In order to improve the detection accuracy between the supine posture and prone posture, we go further to introduce the orientation sensory data as an auxiliary feature. This is based on the observation that the hand directions in the supine and prone positions are different. When the result of the previous step is prone or supine, we combine the tilt angle with three axes data obtained from the direction sensor as a new feature, and classify these postures more accurately based on the template distance matching. The posture will be detected as the one in the template which has a minimum Euclidean distance to it. Noted that when we use the direction sensor, we must limit the pillow orientation remaining unchanged (in the experiment our pillow is placed on the north). In fact, this assumption can be easily satisfied since most people usually have fixed sleep directions.
 
 
-\subsubsection{Hand position recognition}
+\subsubsection*{Hand position recognition}
 The hand position during sleep discloses some potential health problems and the improper hand position will bring bad results \cite{position2014}. For instance, the hand position on the abdomen may indicate its uncomfortable state, while the person is usually not aware of that cases; when the hand is put on the chest, the person is more likely to have a nightmare because of the long-term oppression on the heart; And when the hand is put on the head, it can put excess pressure on the nerves in your shoulders, shoulder and arm pain is quite common, as blood flow is restricted in this position. This can lead to eventual nerve damage, with symptoms including a tingling sensation and numbness \cite{position2014}. {\systemname} can recognize three hand positions, that are on the abdomen, chest or head when the user is in the supine posture, as shown in Fig. \ref{fig:HandPosition}. Note that because in other body postures, the hand is put on the bed at most time, thus we do not consider different hand positions when the body are in other postures.
 
-\begin{figure}[!t]
-\centering
-      \includegraphics[width=0.5\linewidth]{Figures/HandPosition.pdf}
-  \caption{Three hand positions.}\label{fig:HandPosition}
-\end{figure}
 
 
 In fact, when people are sleeping in the supine posture, the hands may be on both sides of the body, on the abdomen, chest or head. To identify the hand position accurately, we present a new algorithm based on our key observation. We have observed that before the hand put on the body initially, it usually experiences a movement from the body side to the end position, and after that the hand always experiences a movement from one position to the other. Thus we can further integrate the hand movement trajectory to determine the hand position at current time. In {\systemname}, We consider nine kinds of the trajectories of hand, from the side of the body to the abdomen, to the chest, to the head; from the chest to the abdomen, to the head; from the abdomen to the chest, to the head; from the head to the abdomen, to the chest. Fig. \ref{Bodyhand} shows the rotation angle changes when the hand is moving from the body side to different positions on the body. We use the three-axis rotation angle calculated by the gyroscope as a feature to establish a sample library, and use the template distance matching classifier to identify the final position of the hand.
@@ -115,14 +131,9 @@ $\theta$, $\sigma$ and $\gamma$ are the x, y and z axis data of the orientation 
 The two graphs on the left in Fig. \ref{fig:cordi} show the acceleration data in (a) and (c) in Fig. \ref{fig:breath_ok1}, respectively, and the two graphs on the right are these data after the conversion of the coordinate system. We can see that before the alignment of the coordinate system, we can not effectively distinguish between REM stage and NREM stage respiratory amplitude from the acceleration amplitude, but after the coordinate system alignment, we can judge the amplitude from the z-axis data well. Here, we choose to calculate the amplitude variances of the z-axis acceleration as a feature, it can be used to measure the intensity of the fluctuation in a signal and a larger variance means that the greater the amplitude of the breaths. Therefore, we further train the variance of the acceleration data when the hand on the abdomen and on the chest under the REM stage and the NREM stage to determine the current respiratory amplitude. We trained 200 sets of acceleration data (100 sets of these from the larger respiratory amplitude and the rest of sets from the normal respiratory amplitude ) from 10 volunteers. Eventually, we concluded that the variance threshold for the acceleration data is 15 when the hand on the abdomen, and the variance threshold is 4 when the hand on the chest.
 
 
- \begin{figure}[!t]
-\centering
-      \includegraphics[width=0.47\linewidth]{Figures/BodyRollover.pdf}
-  \caption{Body rollover from the left side to the right side.}\label{fig:BodyRollover}
-\end{figure}
 
 
-\subsubsection{Body rollover counts}
+\subsubsection*{Body rollover counts}
 Under normal circumstances, people usually body rollover about 20-45 times a night, the meaning of body rollover is to maintain a comfortable position. Otherwise, for a long time to maintain a sleep posture, some muscles will be in a state of tension, making the body in contact with the bed due to oppression caused by poor blood supply, nerve compression will lead to local numbness \cite{rollover2014}. So body rollover is another key indicator about the sleep quality. {\systemname} can detect the number of body rollovers, which can get some reflections of sleep status and the roll-over frequency can also help us to classify the sleep stage \cite{rollover2007}. In general, there are six cases: four posture transition cases between the supine posture and lateral (left or right) posture, and two posture transitions between the left lateral posture and right lateral posture. Fig. \ref{fig:BodyRollover} shows the case when the body moves from the left side to the right side. When the rollover occurs, we observe different change patterns about the tilt angle values. Specifically, the angle values of three different axes are on the falling edge or rising edge simultaneously during a very short time period. Fig. \ref{fig:LeftToRight} -- Fig. \ref{fig:RightToLeft} shows the value changes under different body rollover cases. To this end, one straightforward method to detect the rollover is to test the angle value changes. However, this method suffers a very large error since other hand movements will also induce a similar data changes.
 
 \begin{figure*}[!t]

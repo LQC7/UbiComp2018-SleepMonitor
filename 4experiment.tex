@@ -122,7 +122,7 @@ To assess the detection accuracy of micro body movement, we manually label the g
 
 
  \subsubsection{Performance of acoustic events detection}
-To study the detection accuracies of different acoustic events, we compare the ground truth recorded by the camera with the detected results by our system. Table \ref{tab:sound} shows the results across 15 test participants. We can see that the accuracy for cough event is 88.9\%, which is relative lower with regard to other three events. The reason is that different user's cough pattern are different, the pre-defined parameters used in the system does not include all possible patterns. When we train the parameters of the detection algorithm, we only collect 120 sets of nighttime sound data. The data come from 40 (21 males and 19 females) volunteers of different ages (ages 15 to 60) who are prone to snoring, coughing, or somniloquy at night. So in order to further improve the detection accuracy, we can train particular parameters for more different users.
+To study the detection accuracies of different acoustic events, we compare the ground truth recorded by the camera with the detected results by our system. Table \ref{tab:sound} shows the results across 15 participants. We can see that the precision for cough event is 88.9\% and a little than other three events. The reason is that different user's cough patterns are different, the pre-defined parameters in the detection model does not include all possible patterns. In fact, we train the parameters with only 120 sets of nighttime sound data. Those data come from 40 (21 males and 19 females) volunteers of different ages (from 15 to 60 years old) who are prone to snoring, coughing, or somniloquy at night. To further improve the detection accuracy, we can train particular parameters for different users.
 
 \begin{table}[!thbp]
  \tabcolsep1pt
@@ -177,13 +177,14 @@ To study the detection accuracies of different acoustic events, we compare the g
 \subsection{Overall performance}
 
 \subsubsection{Performance of sleep stage detection}
-In order to prove that the detected events not only reflect the user's sleep habits, but also effectively divide the sleep stage in order to assess the quality of sleep, we regard the reported results from Fitbit Charge2 as the ground truth.  \textcolor{blue}{We randomly selected 50 sets of nocturnal sleep data from 210 sets of sleep data collected from 15 participants for 2 weeks as the test data, what's more, we need to make sure that no less than 3 sets of nocturnal sleep data in these test data come from the same participant. It is worth mentioning that, {\ systemname} bases on the event detected by each submodule every 5 minutes to determine the sleep stage.} The average values of precision and recall are shown in Table \ref{tab:sleep stage}. From this table, we can see that although {\systemname} may often make misjudgement between light sleep stage and REM, the overall detection performance of {\systemname} is satisfying.
+
+In order to prove that the detected events not only reflect the user's sleep habits, but also effectively identify the sleep stages to assess the sleep quality, we regard the reported results from Fitbit Charge2 as the ground truth.  There are 50 sets of nocturnal sleep data selected from 210 sets of sleep data. To make the selection fairly, we randomly pick at least 3 sets of data for each participant. For  reflecting the sleep stage change carefully, {\systemname} evaluates the sleep stage every 15 minutes even when there are no events detected. The averaged precision value and recall value are shown in Table \ref{tab:sleep stage}. It indicates that though {\systemname} may make misjudgement between the light sleep and REM, the overall performance is satisfying.
 
 \begin{table}[!thbp]
 	\tabcolsep1pt
 	\centering  % 表居中
 	\renewcommand\arraystretch{0.4}
-	\caption{\textcolor{blue}{Performance of sleep stage detection.}}\label{tab:sleep stage}
+	\caption{{The confusion matrix of sleep stage detection.}}\label{tab:sleep stage}
 	\begin{tabular}{c| c | c | c | c | c}
 		\hline
 		&\multicolumn{1}{ c|}{ }
@@ -224,13 +225,13 @@ In order to prove that the detected events not only reflect the user's sleep hab
 	\end{tabular}
 \end{table}
 
-\subsubsection{Evaluation on the effect of respiratory amplitude on sleep stage detection}
-When we detect the hand's position in the abdomen or chest, we use the magnitude of the acceleration to estimate the amplitude of the respiration. To assess the effectiveness of {\systemname}'s detection of respiration amplitude, we evaluated the performance of the sleep stage test separately in two cases that with considering respiration amplitude and without considering respiration amplitude. And then we can measure the contributions of it for classification of the sleep stage, as we can see in Table \ref{tab:respiratory}. Obviously, When we consider the division of the sleep stage, combining breathing amplitude as a feature with other features, we find that the precision and recall of each sleep stage improve, which proves the effectiveness of our detection of respiration amplitude.
+\subsubsection{Effect of respiratory amplitude on sleep stage detection}
+When we detect different sleep stages, we also consider the respiratory amplitude when the hand's position is in the abdomen or chest. To assess the effectiveness of respiration amplitude estimation, we evaluate the performance of the sleep stage detection in two cases, that are with and without taking the respiration amplitude into account. The performance of sleep stage detection are shown  in Table \ref{tab:respiratory}. For three different sleep stages, both the precision and recall values are improved with the help of respiration amplitude estimation.
 
 \begin{table} \footnotesize
 	\centering  % 表居中
 	\renewcommand\arraystretch{0.3}
-	\caption{\textcolor{blue}{Evaluation of respiration amplitude contribution}}\label{tab:respiratory}
+	\caption{Effect of respiration amplitude estimation.}\label{tab:respiratory}
 	\begin{tabular}{c| c | c | c | c | c | c| c |}
 		\cline{2-8}
 		&\multicolumn{1}{ c|}{ }

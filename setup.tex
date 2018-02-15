@@ -4,12 +4,10 @@
 \subsection{Implementation}
 We prototype and evaluate \systemname on a Huawei Smartwatch 2 wearable device. The smartwatch is equipped with a Quad-core Cortex-A7
 processor at 1.1 GHz.  It runs the Android Wear 2.0 operating system. We use five sensors of the smartwatch: the accelerometer, gyroscope,
-microphone, light sensor and orientation sensor. The collected sensor data are sent via Bluetooth to a XiaoMI Note2 Android smartphone for post-processing and
-event detection.
+microphone, light sensor and orientation sensor. To reduce energy consumption of the smartwatch, in our experiments we analyse the sensor data on a a XiaoMI Note2 Android smartphone to which the smartwach sends sensor measurements over Bluetooth. %The collected sensor data are sent via Bluetooth to a XiaoMI Note2 Android smartphone for post-processing and
+%event detection.
 
-\systemname starts tracking sleep events when it detects that the light is off and there has been no body movement for 30 minutes. As part
-of an initialization process, \systemname estimates the initial body posture and hand position. It then uses these as a starting point to
-monitor sleep events like the body posture, rollovers, hand positions and body movements.
+\systemname starts tracking sleep events when it detects that the light is off and there has been no body movement for 30 minutes. As part of an initialization process, \systemname estimates the initial body posture and hand position. It then uses these as a starting point to monitor sleep events like the body posture, rollovers, hand positions and body movements.
 
 
 
